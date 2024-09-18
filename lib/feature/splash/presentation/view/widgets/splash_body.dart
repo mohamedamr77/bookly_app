@@ -2,7 +2,6 @@ import 'package:booklyapp/feature/home/presentation/view/home_view.dart';
 import 'package:booklyapp/feature/splash/presentation/view/widgets/slider_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'logo_splach.dart';
 
 class SplashBody extends StatefulWidget {
@@ -44,7 +43,7 @@ class _SplashBodyState extends State<SplashBody> with SingleTickerProviderStateM
         vsync: this,
         duration: const Duration(milliseconds:900));
     slidingAnimation =
-        Tween<Offset>(begin:  const Offset(0, 10), end:    Offset(0, -1)).
+        Tween<Offset>(begin:  const Offset(0, 10), end:    const Offset(0, -1)).
         animate(animationController);
     animationController.forward();
   }
