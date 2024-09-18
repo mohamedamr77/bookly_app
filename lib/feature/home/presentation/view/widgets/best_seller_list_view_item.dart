@@ -33,7 +33,7 @@ class BestSellerListViewItem extends StatelessWidget {
                   color: AppColor.whiteColor,
                   content: AppText.nameBookHarryPotter,
                   fontSize: 0.05.w,
-                  fontFamily: "MontserratSemiBold",
+                  fontFamily: "GTSectraFineRegular",
                 ),
                 0.01.ph,
                 GText(
