@@ -38,6 +38,7 @@ class GText extends StatelessWidget {
       textAlign: textAlign,
       textDirection: textDirection,
       maxLines: maxLines,
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: fontSize,
         overflow: overflow,

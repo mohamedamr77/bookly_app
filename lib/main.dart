@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           darkTheme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: AppColor.primaryColor,
+
           ),
           themeMode: ThemeMode.dark,
           debugShowCheckedModeBanner: false,
