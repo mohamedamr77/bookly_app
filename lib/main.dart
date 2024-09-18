@@ -18,9 +18,10 @@ class MyApp extends StatelessWidget {
         wd = constraints.maxWidth;
         ht = constraints.maxHeight;
         return  GetMaterialApp(
-          theme: ThemeData().copyWith(
-            scaffoldBackgroundColor:  AppColor.primaryColor,
+          darkTheme: ThemeData.dark().copyWith(
+              scaffoldBackgroundColor:  AppColor.primaryColor,
           ),
+          themeMode: ThemeMode.dark,
           debugShowCheckedModeBanner: false,
           home:  const SplashView(),
         );
