@@ -1,4 +1,5 @@
 import 'package:booklyapp/core/utils/app_images.dart';
+import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:flutter/material.dart';
 
 class SplashBody extends StatelessWidget {
@@ -6,11 +7,16 @@ class SplashBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Column(
+    return   Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-         Image(
-           image: AssetImage(AppImages.logo),
-
+         Center(
+           child: Image(
+             image: const AssetImage(AppImages.logo),
+            width: 0.6.w,
+             height: 0.2.h,
+           ),
          ),
       ],
     );
