@@ -13,7 +13,7 @@ class GText extends StatelessWidget {
   final TextDecoration? textDecoration;
   final Color? decorationColor;
   final double? decorationThickness;
-   final String? fontFamily;
+  final String? fontFamily;
   const GText({
     super.key,
     required this.color,
@@ -35,7 +35,7 @@ class GText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       content,
-      textAlign:  textAlign,
+      textAlign: textAlign,
       textDirection: textDirection,
       maxLines: maxLines,
       style: TextStyle(

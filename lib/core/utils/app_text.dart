@@ -1,3 +1,3 @@
-class AppText{
-  static const String readFreeBook="Read Free Book";
+class AppText {
+  static const String readFreeBook = "Read Free Book";
 }

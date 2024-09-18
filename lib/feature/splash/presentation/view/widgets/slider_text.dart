@@ -9,19 +9,15 @@ class SlidingText extends StatelessWidget {
   final Animation<Offset> slidingAnimation;
   @override
   Widget build(BuildContext context) {
-    return  AnimatedBuilder(
+    return AnimatedBuilder(
       animation: slidingAnimation,
       builder: (BuildContext context, Widget? child) {
         return SlideTransition(
           position: slidingAnimation,
           child: Text(AppText.readFreeBook,
-              style: GoogleFonts.afacad(
-                  fontSize: 0.07.w
-              )
-          ),
+              style: GoogleFonts.afacad(fontSize: 0.07.w)),
         );
       },
-
     );
   }
 }

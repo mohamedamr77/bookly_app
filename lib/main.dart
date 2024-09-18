@@ -5,25 +5,26 @@ import 'package:get/get.dart';
 
 import 'core/utils/const_variables.dart';
 
-void main(){
+void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return   LayoutBuilder(
+    return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         wd = constraints.maxWidth;
         ht = constraints.maxHeight;
-        return  GetMaterialApp(
+        return GetMaterialApp(
           darkTheme: ThemeData.dark().copyWith(
-              scaffoldBackgroundColor:  AppColor.primaryColor,
+            scaffoldBackgroundColor: AppColor.primaryColor,
           ),
           themeMode: ThemeMode.dark,
           debugShowCheckedModeBanner: false,
-          home:  const SplashView(),
+          home: const SplashView(),
         );
       },
     );
