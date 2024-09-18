@@ -13,22 +13,26 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const AppbarHome(),
-            0.02.ph,
-            const FeaturedBooksListView(),
-            0.04.ph,
-            Padding(
-              padding:   EdgeInsets.only(left: 0.05.w),
-              child: GText(color: AppColor.whiteColor, content: AppText.bestSeller, fontSize: 0.05.w,fontFamily: "MontserratSemiBold",),
+      child: CustomScrollView(
+      slivers: [
+        const SliverToBoxAdapter(child: AppbarHome()),
+        SliverToBoxAdapter(child:  0.02.ph,),
+        const SliverToBoxAdapter(child: FeaturedBooksListView()),
+        SliverToBoxAdapter(child:  0.04.ph,),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.only(left: 0.05.w),
+            child: GText(
+              color: AppColor.whiteColor,
+              content: AppText.bestSeller,
+              fontSize: 0.05.w,
+              fontFamily: "MontserratSemiBold",
             ),
-            const BestSellerListView(),
-          ],
+          ),
         ),
-      ),
+        const BestSellerListView(),
+      ],
+      )
     );
   }
 }

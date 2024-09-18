@@ -1,4 +1,4 @@
- import 'package:booklyapp/core/utils/extentions/screen_size.dart';
+import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_list_view_item.dart';

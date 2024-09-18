@@ -12,12 +12,13 @@ class BestSellerListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.only(left: 0.05.w),
+      padding: EdgeInsets.only(left: 0.05.w),
       child: Row(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(0.04.w),
-            child: Image(image: const AssetImage(AppImages.bookTestImage),
+            child: Image(
+              image: const AssetImage(AppImages.bookTestImage),
               width: 0.23.w,
               height: 0.18.h,
             ),
@@ -52,7 +53,10 @@ class BestSellerListViewItem extends StatelessWidget {
                         fontFamily: "MontserratSemiBold",
                       ),
                     ),
-                    const Icon(Icons.star,color: AppColor.goldColor,),
+                    const Icon(
+                      Icons.star,
+                      color: AppColor.goldColor,
+                    ),
                     0.01.pw,
                     GText(
                       color: AppColor.whiteColor,
