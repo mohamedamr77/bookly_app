@@ -23,7 +23,7 @@ class BestSellerListViewItem extends StatelessWidget {
               height: 0.18.h,
             ),
           ),
-          0.03.pw,
+          0.05.pw,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,6 +34,7 @@ class BestSellerListViewItem extends StatelessWidget {
                   content: AppText.nameBookHarryPotter,
                   fontSize: 0.05.w,
                   fontFamily: "GTSectraFineRegular",
+                  fontWeight: FontWeight.normal,
                 ),
                 0.01.ph,
                 GText(
@@ -53,25 +54,7 @@ class BestSellerListViewItem extends StatelessWidget {
                         fontFamily: "MontserratSemiBold",
                       ),
                     ),
-                    const Icon(
-                      Icons.star,
-                      color: AppColor.goldColor,
-                    ),
-                    0.01.pw,
-                    GText(
-                      color: AppColor.whiteColor,
-                      content: "4.8",
-                      fontSize: 0.045.w,
-                      fontFamily: "MontserratSemiBold",
-                      maxLines: 2,
-                    ),
-                    0.02.pw,
-                    GText(
-                      color: AppColor.grayColor,
-                      content: "(2390)",
-                      fontSize: 0.04.w,
-                      fontFamily: "MontserratSemiBold",
-                    ),
+                    const BookRating(),
                     0.04.pw,
                   ],
                 )
@@ -80,6 +63,36 @@ class BestSellerListViewItem extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+class BookRating extends StatelessWidget {
+  const BookRating({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Icon(
+          Icons.star,
+          color: AppColor.goldColor,
+        ),
+        0.01.pw,
+        GText(
+          color: AppColor.whiteColor,
+          content: "4.8",
+          fontSize: 0.045.w,
+          fontFamily: "MontserratSemiBold",
+          maxLines: 2,
+        ),
+        0.02.pw,
+        GText(
+          color: AppColor.grayColor,
+          content: "(2390)",
+          fontSize: 0.04.w,
+          fontFamily: "MontserratSemiBold",
+        ),
+      ],
     );
   }
 }
