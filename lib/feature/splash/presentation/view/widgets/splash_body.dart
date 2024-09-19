@@ -2,7 +2,6 @@ import 'package:booklyapp/core/navigation/navigation_manager.dart';
 import 'package:booklyapp/feature/home/presentation/view/home_view.dart';
 import 'package:booklyapp/feature/splash/presentation/view/widgets/slider_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'logo_splach.dart';
 
 class SplashBody extends StatefulWidget {
