@@ -1,3 +1,4 @@
+import 'package:booklyapp/core/navigation/navigation_manager.dart';
 import 'package:booklyapp/feature/home/presentation/view/home_view.dart';
 import 'package:booklyapp/feature/splash/presentation/view/widgets/slider_text.dart';
 import 'package:flutter/material.dart';
@@ -56,10 +57,7 @@ class _SplashBodyState extends State<SplashBody>
         seconds: 2,
       ),
       () {
-        Get.to(
-          () => const HomeView(),
-          transition: Transition.downToUp,
-        );
+        NavigationManager.push(HomeView.id);
       },
     );
   }

@@ -2,6 +2,7 @@ import 'package:booklyapp/feature/splash/presentation/view/widgets/splash_body.d
 import 'package:flutter/material.dart';
 
 class SplashView extends StatelessWidget {
+  static const id = '/';
   const SplashView({super.key});
 
   @override

@@ -2,6 +2,7 @@ import 'package:booklyapp/feature/home/presentation/view/widgets/home_body.dart'
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
+  static const id = '/HomeView';
   const HomeView({super.key});
 
   @override
