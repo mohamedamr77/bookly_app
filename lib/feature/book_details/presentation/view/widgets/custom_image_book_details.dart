@@ -8,7 +8,7 @@ class CustomImageBookDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       width: 0.45.w,
       height: 0.32.h,
       decoration: BoxDecoration(

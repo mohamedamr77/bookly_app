@@ -1,6 +1,7 @@
 import 'package:booklyapp/core/shared_widget/global_text.dart';
 import 'package:booklyapp/core/utils/app_color.dart';
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
+import 'package:booklyapp/feature/book_details/presentation/view/widgets/row_of_price.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'appbar_book_details.dart';
@@ -34,6 +35,8 @@ class BookDetailsBody extends StatelessWidget {
         const BookRating(
           mainAxisAlignment: MainAxisAlignment.center,
         ),
+        0.02.ph,
+        const RowOfPrice(),
       ],
     );
   }
