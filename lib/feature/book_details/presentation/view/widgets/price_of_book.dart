@@ -8,10 +8,11 @@ class PriceOFBook extends StatelessWidget {
       required this.onTap,
       required this.borderRadius,
       required this.color,
-      required this.text});
+      required this.text, required this.colorText});
   final void Function()? onTap;
   final BorderRadiusGeometry? borderRadius;
   final Color? color;
+  final Color colorText;
   final String text;
 
   @override
@@ -26,7 +27,7 @@ class PriceOFBook extends StatelessWidget {
         ),
         width: 0.3.w,
         height: 0.058.h,
-        child: GText(color: Colors.black, content: text, fontSize: 0.04.w),
+        child: GText(color: colorText, content: text, fontSize: 0.04.w),
       ),
     );
   }

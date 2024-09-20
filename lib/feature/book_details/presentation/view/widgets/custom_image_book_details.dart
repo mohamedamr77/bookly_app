@@ -10,7 +10,7 @@ class CustomImageBookDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 0.45.w,
-      height: 0.32.h,
+      height: 0.3.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         image: const DecorationImage(
