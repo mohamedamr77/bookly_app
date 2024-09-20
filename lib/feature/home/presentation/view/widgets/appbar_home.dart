@@ -1,9 +1,11 @@
+import 'package:booklyapp/core/navigation/navigation_manager.dart';
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/shared_widget/custom_appbar.dart';
 import '../../../../../core/utils/app_images.dart';
+import '../../../../search/presentation/view/search_view.dart';
 
 class AppbarHome extends StatelessWidget {
   const AppbarHome({super.key});
@@ -21,7 +23,9 @@ class AppbarHome extends StatelessWidget {
           height: 0.1.h,
         ),
         action: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              NavigationManager.push(SearchView.id);
+            },
             icon: Icon(
               FontAwesomeIcons.magnifyingGlass,
               size: 0.07.w,
