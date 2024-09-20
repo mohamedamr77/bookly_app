@@ -1,6 +1,5 @@
 import 'package:booklyapp/core/shared_widget/global_text.dart';
 import 'package:booklyapp/core/utils/app_color.dart';
-import 'package:booklyapp/core/utils/app_images.dart';
 import 'package:booklyapp/core/utils/app_text.dart';
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/book_details/presentation/view/widgets/row_of_price.dart';
@@ -17,41 +16,48 @@ class BookDetailsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          const AppbarBookDetails(),
-          0.02.ph,
-          const CustomImageBookDetails(),
-          0.03.ph,
-          const NameBook(),
-          0.02.ph,
-          const AuthorOfTheBook(),
-          0.02.ph,
-          const BookRating(
-            mainAxisAlignment: MainAxisAlignment.center,
-          ),
-          0.02.ph,
-          const RowOfPrice(),
-          0.04.ph,
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 0.06.w),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: GText(
-                  color: AppColor.whiteColor,
-                  content: AppText.youCanAlsoLike,
-                  fontSize: 0.045.w,
-                 fontFamily: "MontserratSemiBold",
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Column(
+            children: [
+              const AppbarBookDetails(),
+              0.02.ph,
+              const CustomImageBookDetails(),
+              0.03.ph,
+              const NameBook(),
+              0.02.ph,
+              const AuthorOfTheBook(),
+              0.02.ph,
+              const BookRating(
+                mainAxisAlignment: MainAxisAlignment.center,
               ),
-            ),
+              0.02.ph,
+              const RowOfPrice(),
+              0.04.ph,
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 0.06.w),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: GText(
+                      color: AppColor.whiteColor,
+                      content: AppText.youCanAlsoLike,
+                      fontSize: 0.045.w,
+                      fontFamily: "MontserratSemiBold",
+                    ),
+                  ),
+                ),
+              ),
+              0.02.ph,
+              const ListViewLikeBooks(),
+              0.02.ph,
+
+            ],
           ),
-          0.02.ph,
-          const ListViewLikeBooks(),
-          0.02.ph,
-      
-        ],
-      ),
+        )
+      ],
     );
   }
 }
