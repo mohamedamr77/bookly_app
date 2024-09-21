@@ -1,5 +1,6 @@
 import 'package:booklyapp/core/helper/api_service.dart';
 import 'package:booklyapp/core/utils/app_color.dart';
+import 'package:booklyapp/core/utils/service_locator.dart';
 import 'package:booklyapp/feature/home/data/repo/home_implement.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/featured_books/featured_books_cubit.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/newest_books/newest_books_cubit.dart';
@@ -16,10 +17,14 @@ void main() {
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
       create: (context) =>
-          FeaturedBooksCubit(HomeImplement(ApiService(dio: Dio()))),
+          FeaturedBooksCubit(
+              getIt<HomeImplement>()
+           ),
     ),
     BlocProvider(
-      create: (context) => NewestBooksCubit(HomeImplement(ApiService(dio: Dio()))),
+      create: (context) => NewestBooksCubit(
+        getIt<HomeImplement>()
+      ),
     ),
   ], child: const MyApp()));
 }
