@@ -1,4 +1,5 @@
 import 'package:booklyapp/core/utils/app_color.dart';
+import 'package:booklyapp/feature/home/data/repo/home_implement.dart';
 import 'package:booklyapp/feature/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'core/navigation/navigation_manager.dart';
@@ -6,6 +7,7 @@ import 'core/navigation/routes.dart';
 import 'core/utils/const_variables.dart';
 
 void main() {
+ debugPrint("${ HomeImplement().fetchBestSellerBooks()}");
   runApp(const MyApp());
 }
 

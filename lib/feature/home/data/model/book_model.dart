@@ -34,6 +34,12 @@ class BookModel extends Equatable {
 
   @override
   List<Object?> get props => [kind, id, etag, selfLink, volumeInfo, saleInfo, accessInfo];
+   @override
+  String toString() {
+    // TODO: implement toString
+    return "id :$id";
+  }
+
 }
 
 class VolumeInfo extends Equatable {
