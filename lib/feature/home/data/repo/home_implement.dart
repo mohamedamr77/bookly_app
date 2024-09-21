@@ -7,10 +7,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 
 class HomeImplement implements HomeRepo{
+  final ApiService apiService;
+  HomeImplement(this.apiService);
   @override
   Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async{
    try {
-     var response=await ApiService(dio: Dio()).get(endpoint: "volumes?Filtering=free-ebooks&q=subject:horror&Sorting=newest");
+     var response=await apiService.get(endpoint: "volumes?Filtering=free-ebooks&q=subject:horror&Sorting=newest");
       List<dynamic> booksFromApi=response["items"];
      List<BookModel> booksList=[];
      for (int i = 0; i < booksFromApi.length; i++) {
