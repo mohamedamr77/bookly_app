@@ -6,7 +6,7 @@ import '../helper/api_service.dart';
 
 final getIt = GetIt.instance;
 
-void setup() {
+void setupGetIt() {
   getIt.registerSingleton<ApiService>(
       ApiService(dio: Dio())
   );

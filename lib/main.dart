@@ -13,6 +13,7 @@ import 'core/navigation/routes.dart';
 import 'core/utils/const_variables.dart';
 
 void main() {
+  setupGetIt();
   debugPrint("${HomeImplement(ApiService(dio: Dio())).fetchNewestBooks()}");
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
