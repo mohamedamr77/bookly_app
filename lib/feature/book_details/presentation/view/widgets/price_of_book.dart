@@ -8,7 +8,8 @@ class PriceOFBook extends StatelessWidget {
       required this.onTap,
       required this.borderRadius,
       required this.color,
-      required this.text, required this.colorText});
+      required this.text,
+      required this.colorText});
   final void Function()? onTap;
   final BorderRadiusGeometry? borderRadius;
   final Color? color;

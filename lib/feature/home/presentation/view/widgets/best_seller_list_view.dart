@@ -8,9 +8,9 @@ class BestSellerListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SliverList(
+    return SliverList(
       delegate: SliverChildBuilderDelegate(
-            (context, index) {
+        (context, index) {
           return Column(
             children: [
               const BestSellerListViewItem(),

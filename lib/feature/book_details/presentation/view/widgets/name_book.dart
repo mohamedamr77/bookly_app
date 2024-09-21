@@ -9,7 +9,7 @@ class NameBook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   GText(
+    return GText(
       color: AppColor.whiteColor,
       content: "The Jungle Book",
       fontSize: 0.07.w,

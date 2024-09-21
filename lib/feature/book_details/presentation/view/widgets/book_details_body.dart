@@ -40,14 +40,15 @@ class BookDetailsBody extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 0.06.w),
                   child: const Align(
                     alignment: Alignment.centerLeft,
-                    child: CustomText(text:  AppText.youCanAlsoLike,),
+                    child: CustomText(
+                      text: AppText.youCanAlsoLike,
+                    ),
                   ),
                 ),
               ),
               0.02.ph,
               const ListViewLikeBooks(),
               0.02.ph,
-
             ],
           ),
         )

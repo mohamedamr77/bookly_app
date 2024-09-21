@@ -1,7 +1,6 @@
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:flutter/material.dart';
 
-
 // ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -48,7 +47,6 @@ class CustomTextField extends StatelessWidget {
       child: SizedBox(
         height: 0.09.h,
         child: TextFormField(
-
           onSaved: onSaved,
           controller: controller,
           obscureText: obscureText,
@@ -74,7 +72,7 @@ class CustomTextField extends StatelessWidget {
           decoration: InputDecoration(
             contentPadding:
                 EdgeInsets.only(top: 0.05.h, left: 0.05.w, right: 0.05.w),
-             fillColor: fillColor,
+            fillColor: fillColor,
             hintText: hintText,
             // hintStyle: TextStyle(
             //     fontFamily: SharedFunctions.determineFontFamily(hintText),

@@ -3,11 +3,10 @@ import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/app_color.dart';
-import '../utils/app_text.dart';
 
 class CustomText extends StatelessWidget {
   const CustomText({super.key, required this.text});
-    final String text;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return GText(

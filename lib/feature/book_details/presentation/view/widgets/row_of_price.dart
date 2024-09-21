@@ -25,14 +25,15 @@ class _RowOfPriceState extends State<RowOfPrice> {
               bookIsFree = false;
             });
           },
-          color:
-              bookIsFree == false ? const Color(0xffEF8262) : Color(0xffE5EBF1),
+          color: bookIsFree == false
+              ? const Color(0xffEF8262)
+              : const Color(0xffE5EBF1),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(0.04.w),
             bottomLeft: Radius.circular(0.04.w),
           ),
-          colorText:bookIsFree == false
-            ? AppColor.whiteColor:AppColor.blackColor ,
+          colorText:
+              bookIsFree == false ? AppColor.whiteColor : AppColor.blackColor,
         ),
         PriceOFBook(
           text: "free",
@@ -48,8 +49,8 @@ class _RowOfPriceState extends State<RowOfPrice> {
             topRight: Radius.circular(0.04.w),
             bottomRight: Radius.circular(0.04.w),
           ),
-          colorText:bookIsFree == true
-            ? AppColor.whiteColor:AppColor.blackColor ,
+          colorText:
+              bookIsFree == true ? AppColor.whiteColor : AppColor.blackColor,
         ),
       ],
     );

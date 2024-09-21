@@ -16,7 +16,7 @@ class BestSellerListViewItem extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: 0.05.w),
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           navigateToDetailsScreen();
         },
         child: Row(
@@ -72,8 +72,8 @@ class BestSellerListViewItem extends StatelessWidget {
       ),
     );
   }
-  void navigateToDetailsScreen(){
+
+  void navigateToDetailsScreen() {
     NavigationManager.push(BookDetailsView.id);
   }
 }
-

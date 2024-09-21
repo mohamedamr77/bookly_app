@@ -11,7 +11,7 @@ class CustomListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         navigateToDetailsScreen();
       },
       child: Container(
@@ -37,7 +37,8 @@ class CustomListViewItem extends StatelessWidget {
           )),
     );
   }
-  void navigateToDetailsScreen(){
+
+  void navigateToDetailsScreen() {
     NavigationManager.push(BookDetailsView.id);
   }
 }

@@ -24,14 +24,16 @@ class SearchBody extends StatelessWidget {
             color: AppColor.whiteColor.withOpacity(0.4),
           )),
           hintText: 'search',
-          suffixIcon: Icon(
+          suffixIcon: const Icon(
             Icons.search,
             color: AppColor.whiteColor,
           ),
         ),
         Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 0.06.w,vertical: 0.02.h),
-          child: const CustomText(text: "Search result :",),
+          padding: EdgeInsets.symmetric(horizontal: 0.06.w, vertical: 0.02.h),
+          child: const CustomText(
+            text: "Search result :",
+          ),
         ),
         const SearchResultListView(),
       ],

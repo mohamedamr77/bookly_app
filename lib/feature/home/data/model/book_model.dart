@@ -26,20 +26,25 @@ class BookModel extends Equatable {
       id: json['id'],
       etag: json['etag'],
       selfLink: json['selfLink'],
-      volumeInfo: json['volumeInfo'] != null ? VolumeInfo.fromJson(json['volumeInfo']) : null,
-      saleInfo: json['saleInfo'] != null ? SaleInfo.fromJson(json['saleInfo']) : null,
-      accessInfo: json['accessInfo'] != null ? AccessInfo.fromJson(json['accessInfo']) : null,
+      volumeInfo: json['volumeInfo'] != null
+          ? VolumeInfo.fromJson(json['volumeInfo'])
+          : null,
+      saleInfo:
+          json['saleInfo'] != null ? SaleInfo.fromJson(json['saleInfo']) : null,
+      accessInfo: json['accessInfo'] != null
+          ? AccessInfo.fromJson(json['accessInfo'])
+          : null,
     );
   }
 
   @override
-  List<Object?> get props => [kind, id, etag, selfLink, volumeInfo, saleInfo, accessInfo];
-   @override
+  List<Object?> get props =>
+      [kind, id, etag, selfLink, volumeInfo, saleInfo, accessInfo];
+  @override
   String toString() {
     // TODO: implement toString
     return "id :$id";
   }
-
 }
 
 class VolumeInfo extends Equatable {
@@ -74,13 +79,12 @@ class VolumeInfo extends Equatable {
   });
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) {
-    var authorsFromJson = json['authors'] != null
-        ? List<String>.from(json['authors'])
-        : null;
+    var authorsFromJson =
+        json['authors'] != null ? List<String>.from(json['authors']) : null;
     var industryIdentifiersFromJson = json['industryIdentifiers'] != null
         ? (json['industryIdentifiers'] as List)
-        .map((i) => IndustryIdentifier.fromJson(i))
-        .toList()
+            .map((i) => IndustryIdentifier.fromJson(i))
+            .toList()
         : null;
 
     return VolumeInfo(
@@ -96,26 +100,28 @@ class VolumeInfo extends Equatable {
       language: json['language'],
       previewLink: json['previewLink'],
       infoLink: json['infoLink'],
-      imageLinks: json['imageLinks'] != null ? ImageLinks.fromJson(json['imageLinks']) : null,
+      imageLinks: json['imageLinks'] != null
+          ? ImageLinks.fromJson(json['imageLinks'])
+          : null,
     );
   }
 
   @override
   List<Object?> get props => [
-    title,
-    authors,
-    publisher,
-    publishedDate,
-    description,
-    pageCount,
-    industryIdentifiers,
-    averageRating,
-    ratingsCount,
-    language,
-    previewLink,
-    infoLink,
-    imageLinks,
-  ];
+        title,
+        authors,
+        publisher,
+        publishedDate,
+        description,
+        pageCount,
+        industryIdentifiers,
+        averageRating,
+        ratingsCount,
+        language,
+        previewLink,
+        infoLink,
+        imageLinks,
+      ];
 }
 
 class IndustryIdentifier extends Equatable {
@@ -197,5 +203,6 @@ class AccessInfo extends Equatable {
   }
 
   @override
-  List<Object?> get props => [country, viewability, embeddable, publicDomain, webReaderLink];
+  List<Object?> get props =>
+      [country, viewability, embeddable, publicDomain, webReaderLink];
 }

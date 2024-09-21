@@ -8,16 +8,16 @@ import 'newest_books_state.dart';
 
 class NewestBooksCubit extends Cubit<NewestBooksState> {
   NewestBooksCubit(this.homeRepo) : super(NewestBooksInitialState());
-  List<BookModel> newestBooksList=[];
+  List<BookModel> newestBooksList = [];
   final HomeRepo homeRepo;
-  fetchNewestBooks()async{
+  fetchNewestBooks() async {
     emit(NewestBooksLoadingState());
-    Either<Failure, List<BookModel>> result =await homeRepo.fetchFeaturedBooks();
-    result.fold(
-            (faliure){
-          emit(NewestBooksFaliureState(errorMessage: faliure.errorMessage));
-        }, (success){
-      newestBooksList=success;
+    Either<Failure, List<BookModel>> result =
+        await homeRepo.fetchFeaturedBooks();
+    result.fold((faliure) {
+      emit(NewestBooksFaliureState(errorMessage: faliure.errorMessage));
+    }, (success) {
+      newestBooksList = success;
       emit(NewestBooksSuccessState());
     });
   }

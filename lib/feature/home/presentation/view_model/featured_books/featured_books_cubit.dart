@@ -8,18 +8,17 @@ import '../../../../../core/error/faliure.dart';
 
 class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
   FeaturedBooksCubit(this.homeRepo) : super(FeaturedBooksInitialState());
-   List<BookModel> featuredBooksList=[];
-    final HomeRepo homeRepo;
-  fetchFeaturedBooks()async{
+  List<BookModel> featuredBooksList = [];
+  final HomeRepo homeRepo;
+  fetchFeaturedBooks() async {
     emit(FeaturedBooksLoadingState());
-    Either<Failure, List<BookModel>> result =await homeRepo.fetchFeaturedBooks();
-    result.fold(
-            (faliure){
-              emit(FeaturedBooksFaliureState(errorMessage: faliure.errorMessage));
-            }, (success){
-              featuredBooksList=success;
-            emit(FeaturedBooksSuccessState());
+    Either<Failure, List<BookModel>> result =
+        await homeRepo.fetchFeaturedBooks();
+    result.fold((faliure) {
+      emit(FeaturedBooksFaliureState(errorMessage: faliure.errorMessage));
+    }, (success) {
+      featuredBooksList = success;
+      emit(FeaturedBooksSuccessState());
     });
   }
-
 }

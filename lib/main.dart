@@ -17,15 +17,10 @@ void main() {
   debugPrint("${HomeImplement(ApiService(dio: Dio())).fetchNewestBooks()}");
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
-      create: (context) =>
-          FeaturedBooksCubit(
-              getIt<HomeImplement>()
-           ),
+      create: (context) => FeaturedBooksCubit(getIt<HomeImplement>()),
     ),
     BlocProvider(
-      create: (context) => NewestBooksCubit(
-        getIt<HomeImplement>()
-      ),
+      create: (context) => NewestBooksCubit(getIt<HomeImplement>()),
     ),
   ], child: const MyApp()));
 }
