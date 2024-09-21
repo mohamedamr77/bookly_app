@@ -7,9 +7,9 @@ import 'package:dartz/dartz.dart';
 import '../../../../../core/error/faliure.dart';
 
 class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
-  FeaturedBooksCubit() : super(FeaturedBooksInitialState());
+  FeaturedBooksCubit(this.homeRepo) : super(FeaturedBooksInitialState());
    List<BookModel> featuredBooksList=[];
-   late  HomeRepo homeRepo;
+    final HomeRepo homeRepo;
   fetchFeaturedBooks()async{
     emit(FeaturedBooksLoadingState());
     Either<Failure, List<BookModel>> result =await homeRepo.fetchFeaturedBooks();
