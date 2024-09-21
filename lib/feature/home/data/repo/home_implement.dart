@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 
 class HomeImplement implements HomeRepo{
   @override
-  Future<Either<Failure, List<BookModel>>> fetchBestSellerBooks() async{
+  Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async{
    try {
      var response=await ApiService(dio: Dio()).get(endpoint: "volumes?Filtering=free-ebooks&q=subject:horror&Sorting=newest");
       List<dynamic> booksFromApi=response["items"];

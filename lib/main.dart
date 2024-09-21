@@ -7,7 +7,7 @@ import 'core/navigation/routes.dart';
 import 'core/utils/const_variables.dart';
 
 void main() {
- debugPrint("${ HomeImplement().fetchBestSellerBooks()}");
+ debugPrint("${ HomeImplement().fetchNewestBooks()}");
   runApp(const MyApp());
 }
 
