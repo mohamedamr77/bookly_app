@@ -2,6 +2,7 @@ import 'package:booklyapp/core/utils/app_color.dart';
 import 'package:booklyapp/core/utils/service_locator.dart';
 import 'package:booklyapp/feature/home/data/repo/home_implement.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/featured_books/featured_books_cubit.dart';
+import 'package:booklyapp/feature/home/presentation/view_model/internet_home/internet_home_cubit.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/newest_books/newest_books_cubit.dart';
 import 'package:booklyapp/feature/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,10 @@ void main() {
     BlocProvider(
       create: (context) =>
           NewestBooksCubit(getIt<HomeImplement>())..fetchNewestBooks(),
+    ),
+    BlocProvider(
+      create: (context) =>
+          InternetHomeCubit(getIt<HomeImplement>()),
     ),
   ], child: const MyApp()));
 }
