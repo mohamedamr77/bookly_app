@@ -15,7 +15,7 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
     loading=true;
     emit(NewestBooksLoadingState());
     Either<Failure, List<BookModel>> result =
-        await homeRepo.fetchFeaturedBooks();
+        await homeRepo.fetchNewestBooks();
     result.fold((faliure) {
       loading=false;
       emit(NewestBooksFaliureState(errorMessage: faliure.errorMessage));

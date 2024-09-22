@@ -43,6 +43,8 @@ class BestSellerListViewItem extends StatelessWidget {
                     fontSize: 0.05.w,
                     fontFamily: "GTSectraFineRegular",
                     fontWeight: FontWeight.normal,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   0.01.ph,
                   GText(
