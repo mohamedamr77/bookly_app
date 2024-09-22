@@ -1,7 +1,10 @@
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/home/data/model/book_model.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/book_rating.dart';
+import 'package:booklyapp/feature/home/presentation/view/widgets/shimmer_newest_books_widget/build_shimmer_item.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../../../core/navigation/navigation_manager.dart';
 import '../../../../../core/shared_widget/global_text.dart';
 import '../../../../../core/utils/app_color.dart';
@@ -24,10 +27,24 @@ class BestSellerListViewItem extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(0.04.w),
-              child: Image(
-                image:  NetworkImage(bookModel.volumeInfo!.imageLinks!.thumbnail!),
+              child: CachedNetworkImage(
                 width: 0.23.w,
                 height: 0.18.h,
+                imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail!,
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    Shimmer.fromColors(
+                      baseColor: Colors.grey[600]!,
+                      highlightColor: Colors.grey[400]!,
+                      child: Container(
+                        width: 0.23.w,
+                        height: 0.18.h,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[600],
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
             0.05.pw,
