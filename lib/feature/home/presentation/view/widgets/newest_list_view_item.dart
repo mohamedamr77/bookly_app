@@ -1,4 +1,5 @@
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
+import 'package:booklyapp/feature/home/data/model/book_model.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/navigation/navigation_manager.dart';
@@ -9,8 +10,8 @@ import '../../../../../core/utils/app_text.dart';
 import '../../../../book_details/presentation/view/book_details_view.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key});
-
+  const BestSellerListViewItem({super.key, required this.bookModel});
+   final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +25,7 @@ class BestSellerListViewItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(0.04.w),
               child: Image(
-                image: const AssetImage(AppImages.bookTestImage),
+                image:  NetworkImage(bookModel.volumeInfo!.imageLinks!.thumbnail!),
                 width: 0.23.w,
                 height: 0.18.h,
               ),
@@ -37,7 +38,8 @@ class BestSellerListViewItem extends StatelessWidget {
                 children: [
                   GText(
                     color: AppColor.whiteColor,
-                    content: AppText.nameBookHarryPotter,
+                    // content: AppText.nameBookHarryPotter,
+                    content: bookModel.volumeInfo!.title!.trim(),
                     fontSize: 0.05.w,
                     fontFamily: "GTSectraFineRegular",
                     fontWeight: FontWeight.normal,
@@ -45,7 +47,9 @@ class BestSellerListViewItem extends StatelessWidget {
                   0.01.ph,
                   GText(
                     color: AppColor.grayColor,
-                    content: "J.K. Rowling",
+                    content: bookModel.volumeInfo?.authors != null && bookModel.volumeInfo!.authors!.isNotEmpty
+                        ? bookModel.volumeInfo!.authors![0]
+                        : "Unknown Author",
                     fontSize: 0.035.w,
                     fontFamily: "MontserratSemiBold",
                   ),
@@ -60,7 +64,15 @@ class BestSellerListViewItem extends StatelessWidget {
                           fontFamily: "MontserratSemiBold",
                         ),
                       ),
-                      const BookRating(),
+                      BookRating(
+                        averageRating: bookModel.volumeInfo?.averageRating != null
+                            ? bookModel.volumeInfo!.averageRating!.toString().trim()
+                            : "N/A",  // Default value when averageRating is null
+                        ratingsCount: bookModel.volumeInfo?.ratingsCount != null
+                            ? bookModel.volumeInfo!.ratingsCount!.toString().trim()
+                            : "0",  // Default value when ratingsCount is null
+                      ),
+
                       0.04.pw,
                     ],
                   )

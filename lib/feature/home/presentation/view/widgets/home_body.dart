@@ -3,7 +3,7 @@ import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/shared_widget/custom_text.dart';
 import 'appbar_home.dart';
-import 'best_seller_list_view.dart';
+import 'newest_list_view.dart';
 import 'featured_books_list_view.dart';
 
 class HomeBody extends StatelessWidget {
