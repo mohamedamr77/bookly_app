@@ -1,8 +1,12 @@
-abstract class InternetHomeState{}
-class InternetHomeInitialState extends InternetHomeState{}
-class InternetHomeFaliureState extends InternetHomeState{
+abstract class InternetHomeState {}
+
+class InternetHomeInitialState extends InternetHomeState {}
+
+class InternetHomeFaliureState extends InternetHomeState {
   final String errorMessage;
   InternetHomeFaliureState({required this.errorMessage});
 }
-class InternetHomeSuccessState extends InternetHomeState{}
-class InternetHomeLoadingState extends InternetHomeState{}
+
+class InternetHomeSuccessState extends InternetHomeState {}
+
+class InternetHomeLoadingState extends InternetHomeState {}

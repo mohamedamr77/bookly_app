@@ -62,20 +62,16 @@ class HomeImplement implements HomeRepo {
     if (connectivityResult == ConnectivityResult.none) {
       // No internet connection
       return Left(ServerFailure(errorMessage: 'No Internet connectivity'));
-    }
-    else if (connectivityResult == ConnectivityResult.wifi) {
+    } else if (connectivityResult == ConnectivityResult.wifi) {
       // Connected to WiFi
       return const Right(null); // Return success
-    }
-    else if (connectivityResult == ConnectivityResult.mobile) {
+    } else if (connectivityResult == ConnectivityResult.mobile) {
       // Connected to Mobile Data
       return const Right(null); // Return success
-    }
-    else if (connectivityResult == ConnectivityResult.ethernet) {
+    } else if (connectivityResult == ConnectivityResult.ethernet) {
       // Connected to Ethernet
       return const Right(null); // Return success
-    }
-    else {
+    } else {
       // Handle other cases like Bluetooth, etc. if needed
       return const Right(null); // Return success for any other connection
     }

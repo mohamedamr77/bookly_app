@@ -26,7 +26,6 @@ class BestSellerListView extends StatelessWidget {
         if (state is NewestBooksFaliureState) {
           return _buildFaliureState(errorMessage: state.errorMessage);
         }
-
         return const SizedBox
             .shrink(); // Placeholder until the state is updated
       },
@@ -57,8 +56,7 @@ class BestSellerListView extends StatelessWidget {
 
   /// Displays an empty state if no books are available
   Widget _buildFaliureState({required String? errorMessage}) {
-
-    return  SliverToBoxAdapter(
+    return SliverToBoxAdapter(
       child: Center(
         child: Text(errorMessage!),
       ),

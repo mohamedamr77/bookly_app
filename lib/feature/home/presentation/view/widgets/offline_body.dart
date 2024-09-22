@@ -16,11 +16,13 @@ class OfflineBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.wifi_off_outlined,size: 0.4.w, color:AppColor.grayColor),
+          Icon(Icons.wifi_off_outlined, size: 0.4.w, color: AppColor.grayColor),
           0.02.ph,
           GText(
             textAlign: TextAlign.center,
-            color:AppColor.grayColor , content: "You’re offline", fontSize: 0.06.w,
+            color: AppColor.grayColor,
+            content: "You’re offline",
+            fontSize: 0.06.w,
             fontFamily: "MontserratSemiBold",
           ),
           0.02.ph,
@@ -33,7 +35,9 @@ class OfflineBody extends StatelessWidget {
             height: 0.07.h,
             child: GText(
               textAlign: TextAlign.center,
-              color:AppColor.blackColor , content: "Try Again", fontSize: 0.05.w,
+              color: AppColor.blackColor,
+              content: "Try Again",
+              fontSize: 0.05.w,
               fontFamily: "MontserratSemiBold",
             ),
           )

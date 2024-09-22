@@ -1,6 +1,6 @@
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/home/data/model/book_model.dart';
-import 'package:booklyapp/feature/home/presentation/view/widgets/shimmer_featured_books_widget/shimmer_featured_book_item.dart';
+import 'package:booklyapp/feature/home/presentation/view/widgets/shimmer_featured_books_widget/shimmer_featured_book_item_blace_holder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/navigation/navigation_manager.dart';
