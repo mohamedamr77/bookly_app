@@ -7,19 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 import 'custom_list_view_item.dart';
 
-class FeaturedBooksListView extends StatefulWidget {
+class FeaturedBooksListView extends StatelessWidget {
   const FeaturedBooksListView({super.key});
-
-  @override
-  State<FeaturedBooksListView> createState() => _FeaturedBooksListViewState();
-}
-
-class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<FeaturedBooksCubit>(context).fetchFeaturedBooks();
-  }
 
   @override
   Widget build(BuildContext context) {
