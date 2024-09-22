@@ -36,7 +36,7 @@ class FeaturedBooksListView extends StatelessWidget {
                         : index == 9
                             ? EdgeInsets.only(right: 0.07.w)
                             : EdgeInsets.zero,
-                    child:const ShimmerFeaturedBookItem(),
+                    child: const ShimmerFeaturedBookItem(),
                   );
                 },
                 separatorBuilder: (context, index) => SizedBox(

@@ -14,10 +14,12 @@ void main() {
   setupGetIt();
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
-      create: (context) => FeaturedBooksCubit(getIt<HomeImplement>())..fetchFeaturedBooks(),
+      create: (context) =>
+          FeaturedBooksCubit(getIt<HomeImplement>())..fetchFeaturedBooks(),
     ),
     BlocProvider(
-      create: (context) => NewestBooksCubit(getIt<HomeImplement>())..fetchNewestBooks(),
+      create: (context) =>
+          NewestBooksCubit(getIt<HomeImplement>())..fetchNewestBooks(),
     ),
   ], child: const MyApp()));
 }

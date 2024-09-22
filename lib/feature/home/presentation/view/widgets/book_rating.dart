@@ -5,7 +5,10 @@ import '../../../../../core/utils/app_color.dart';
 
 class BookRating extends StatelessWidget {
   const BookRating(
-      {super.key, this.mainAxisAlignment = MainAxisAlignment.start, this.averageRating, this.ratingsCount});
+      {super.key,
+      this.mainAxisAlignment = MainAxisAlignment.start,
+      this.averageRating,
+      this.ratingsCount});
   final MainAxisAlignment? mainAxisAlignment;
   final String? averageRating;
   final String? ratingsCount;
@@ -21,7 +24,7 @@ class BookRating extends StatelessWidget {
         0.01.pw,
         GText(
           color: AppColor.whiteColor,
-          content: averageRating?? "4.8 error",
+          content: averageRating ?? "4.8 error",
           fontSize: 0.045.w,
           fontFamily: "MontserratSemiBold",
           maxLines: 2,

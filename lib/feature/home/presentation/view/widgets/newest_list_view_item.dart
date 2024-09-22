@@ -1,20 +1,17 @@
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/home/data/model/book_model.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/book_rating.dart';
-import 'package:booklyapp/feature/home/presentation/view/widgets/shimmer_newest_books_widget/build_shimmer_item.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../../core/navigation/navigation_manager.dart';
 import '../../../../../core/shared_widget/global_text.dart';
 import '../../../../../core/utils/app_color.dart';
-import '../../../../../core/utils/app_images.dart';
-import '../../../../../core/utils/app_text.dart';
 import '../../../../book_details/presentation/view/book_details_view.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({super.key, required this.bookModel});
-   final BookModel bookModel;
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,18 +30,18 @@ class BestSellerListViewItem extends StatelessWidget {
                 imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail!,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     Shimmer.fromColors(
-                      baseColor: Colors.grey[600]!,
-                      highlightColor: Colors.grey[400]!,
-                      child: Container(
-                        width: 0.23.w,
-                        height: 0.18.h,
-                        decoration: BoxDecoration(
-                          color: Colors.grey[600],
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
+                  baseColor: Colors.grey[600]!,
+                  highlightColor: Colors.grey[400]!,
+                  child: Container(
+                    width: 0.23.w,
+                    height: 0.18.h,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[600],
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
+                ),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
             0.05.pw,
@@ -66,7 +63,8 @@ class BestSellerListViewItem extends StatelessWidget {
                   0.01.ph,
                   GText(
                     color: AppColor.grayColor,
-                    content: bookModel.volumeInfo?.authors != null && bookModel.volumeInfo!.authors!.isNotEmpty
+                    content: bookModel.volumeInfo?.authors != null &&
+                            bookModel.volumeInfo!.authors!.isNotEmpty
                         ? bookModel.volumeInfo!.authors![0]
                         : "Unknown Author",
                     fontSize: 0.035.w,
@@ -84,14 +82,18 @@ class BestSellerListViewItem extends StatelessWidget {
                         ),
                       ),
                       BookRating(
-                        averageRating: bookModel.volumeInfo?.averageRating != null
-                            ? bookModel.volumeInfo!.averageRating!.toString().trim()
-                            : "N/A",  // Default value when averageRating is null
+                        averageRating: bookModel.volumeInfo?.averageRating !=
+                                null
+                            ? bookModel.volumeInfo!.averageRating!
+                                .toString()
+                                .trim()
+                            : "N/A", // Default value when averageRating is null
                         ratingsCount: bookModel.volumeInfo?.ratingsCount != null
-                            ? bookModel.volumeInfo!.ratingsCount!.toString().trim()
-                            : "0",  // Default value when ratingsCount is null
+                            ? bookModel.volumeInfo!.ratingsCount!
+                                .toString()
+                                .trim()
+                            : "0", // Default value when ratingsCount is null
                       ),
-
                       0.04.pw,
                     ],
                   )

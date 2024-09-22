@@ -10,17 +10,16 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
   NewestBooksCubit(this.homeRepo) : super(NewestBooksInitialState());
   List<BookModel> newestBooksList = [];
   final HomeRepo homeRepo;
-  bool loading=false;
+  bool loading = false;
   fetchNewestBooks() async {
-    loading=true;
+    loading = true;
     emit(NewestBooksLoadingState());
-    Either<Failure, List<BookModel>> result =
-        await homeRepo.fetchNewestBooks();
+    Either<Failure, List<BookModel>> result = await homeRepo.fetchNewestBooks();
     result.fold((faliure) {
-      loading=false;
+      loading = false;
       emit(NewestBooksFaliureState(errorMessage: faliure.errorMessage));
     }, (success) {
-      loading=false;
+      loading = false;
       newestBooksList = success;
       emit(NewestBooksSuccessState());
     });

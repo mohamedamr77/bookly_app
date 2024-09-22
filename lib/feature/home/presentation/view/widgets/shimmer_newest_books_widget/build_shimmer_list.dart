@@ -11,12 +11,13 @@ class BuildShimmerList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-            (context, index) {
+        (context, index) {
           return Shimmer.fromColors(
             baseColor: Colors.grey[600]!,
             highlightColor: Colors.grey[400]!,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 0.01.h, horizontal: 0.05.w),
+              padding:
+                  EdgeInsets.symmetric(vertical: 0.01.h, horizontal: 0.05.w),
               child: const BuildShimmerItem(),
             ),
           );

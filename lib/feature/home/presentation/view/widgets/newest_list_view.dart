@@ -15,7 +15,6 @@ class BestSellerListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<NewestBooksCubit, NewestBooksState>(
       builder: (context, state) {
-
         if (state is NewestBooksLoadingState) {
           return const BuildShimmerList();
         }
@@ -28,8 +27,8 @@ class BestSellerListView extends StatelessWidget {
           return _buildFaliureState();
         }
 
-        return const SizedBox.shrink(); // Placeholder until the state is updated
-
+        return const SizedBox
+            .shrink(); // Placeholder until the state is updated
       },
       listener: (context, state) {},
     );
@@ -43,7 +42,7 @@ class BestSellerListView extends StatelessWidget {
 
     return SliverList(
       delegate: SliverChildBuilderDelegate(
-            (context, index) {
+        (context, index) {
           return Column(
             children: [
               BestSellerListViewItem(bookModel: books[index]),

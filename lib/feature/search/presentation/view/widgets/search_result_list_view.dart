@@ -1,8 +1,6 @@
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../home/presentation/view/widgets/newest_list_view_item.dart';
-
 class SearchResultListView extends StatelessWidget {
   const SearchResultListView({super.key});
 
@@ -11,6 +9,8 @@ class SearchResultListView extends StatelessWidget {
     return Expanded(
       child: ListView.separated(
           itemBuilder: (context, index) {
+            return null;
+
             // return const BestSellerListViewItem();
           },
           separatorBuilder: (context, index) {
