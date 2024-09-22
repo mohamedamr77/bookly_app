@@ -1,5 +1,6 @@
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/home/data/model/book_model.dart';
+import 'package:booklyapp/feature/home/presentation/view/widgets/shimmer_featured_books_widget/shimmer_featured_book_item.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/featured_books/featured_books_cubit.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/featured_books/featured_books_state.dart';
 import 'package:flutter/material.dart';
@@ -35,14 +36,7 @@ class FeaturedBooksListView extends StatelessWidget {
                         : index == 9
                             ? EdgeInsets.only(right: 0.07.w)
                             : EdgeInsets.zero,
-                    child: Container(
-                      width: 0.4.w,
-                      height: 0.2.h,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[600],
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
+                    child:const ShimmerFeaturedBookItem(),
                   );
                 },
                 separatorBuilder: (context, index) => SizedBox(
