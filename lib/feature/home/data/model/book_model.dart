@@ -30,7 +30,7 @@ class BookModel extends Equatable {
           ? VolumeInfo.fromJson(json['volumeInfo'])
           : null,
       saleInfo:
-          json['saleInfo'] != null ? SaleInfo.fromJson(json['saleInfo']) : null,
+      json['saleInfo'] != null ? SaleInfo.fromJson(json['saleInfo']) : null,
       accessInfo: json['accessInfo'] != null
           ? AccessInfo.fromJson(json['accessInfo'])
           : null,
@@ -61,6 +61,8 @@ class VolumeInfo extends Equatable {
   final String? previewLink;
   final String? infoLink;
   final ImageLinks? imageLinks;
+  final ReadingModes? readingModes; // Add this field
+  final PanelizationSummary? panelizationSummary; // Add this field
 
   const VolumeInfo({
     this.title,
@@ -76,25 +78,23 @@ class VolumeInfo extends Equatable {
     this.previewLink,
     this.infoLink,
     this.imageLinks,
+    this.readingModes,
+    this.panelizationSummary,
   });
 
   factory VolumeInfo.fromJson(Map<String, dynamic> json) {
-    var authorsFromJson =
-        json['authors'] != null ? List<String>.from(json['authors']) : null;
-    var industryIdentifiersFromJson = json['industryIdentifiers'] != null
-        ? (json['industryIdentifiers'] as List)
-            .map((i) => IndustryIdentifier.fromJson(i))
-            .toList()
-        : null;
-
     return VolumeInfo(
       title: json['title'],
-      authors: authorsFromJson,
+      authors: json['authors'] != null ? List<String>.from(json['authors']) : null,
       publisher: json['publisher'],
       publishedDate: json['publishedDate'],
       description: json['description'],
       pageCount: json['pageCount'],
-      industryIdentifiers: industryIdentifiersFromJson,
+      industryIdentifiers: json['industryIdentifiers'] != null
+          ? (json['industryIdentifiers'] as List)
+          .map((i) => IndustryIdentifier.fromJson(i))
+          .toList()
+          : null,
       averageRating: json['averageRating']?.toDouble(),
       ratingsCount: json['ratingsCount'],
       language: json['language'],
@@ -103,26 +103,35 @@ class VolumeInfo extends Equatable {
       imageLinks: json['imageLinks'] != null
           ? ImageLinks.fromJson(json['imageLinks'])
           : null,
+      readingModes: json['readingModes'] != null
+          ? ReadingModes.fromJson(json['readingModes'])
+          : null, // Parse readingModes
+      panelizationSummary: json['panelizationSummary'] != null
+          ? PanelizationSummary.fromJson(json['panelizationSummary'])
+          : null, // Parse panelizationSummary
     );
   }
 
   @override
   List<Object?> get props => [
-        title,
-        authors,
-        publisher,
-        publishedDate,
-        description,
-        pageCount,
-        industryIdentifiers,
-        averageRating,
-        ratingsCount,
-        language,
-        previewLink,
-        infoLink,
-        imageLinks,
-      ];
+    title,
+    authors,
+    publisher,
+    publishedDate,
+    description,
+    pageCount,
+    industryIdentifiers,
+    averageRating,
+    ratingsCount,
+    language,
+    previewLink,
+    infoLink,
+    imageLinks,
+    readingModes, // Add this field
+    panelizationSummary, // Add this field
+  ];
 }
+
 
 class IndustryIdentifier extends Equatable {
   final String? type;
@@ -176,13 +185,14 @@ class SaleInfo extends Equatable {
   @override
   List<Object?> get props => [country, saleability, isEbook];
 }
-
 class AccessInfo extends Equatable {
   final String? country;
   final String? viewability;
   final bool? embeddable;
   final bool? publicDomain;
   final String? webReaderLink;
+  final Epub? epub; // Add this field
+  final Pdf? pdf; // Add this field
 
   const AccessInfo({
     this.country,
@@ -190,6 +200,8 @@ class AccessInfo extends Equatable {
     this.embeddable,
     this.publicDomain,
     this.webReaderLink,
+    this.epub,
+    this.pdf,
   });
 
   factory AccessInfo.fromJson(Map<String, dynamic> json) {
@@ -199,10 +211,85 @@ class AccessInfo extends Equatable {
       embeddable: json['embeddable'],
       publicDomain: json['publicDomain'],
       webReaderLink: json['webReaderLink'],
+      epub: json['epub'] != null ? Epub.fromJson(json['epub']) : null, // Parse epub
+      pdf: json['pdf'] != null ? Pdf.fromJson(json['pdf']) : null, // Parse pdf
     );
   }
 
   @override
-  List<Object?> get props =>
-      [country, viewability, embeddable, publicDomain, webReaderLink];
+  List<Object?> get props => [
+    country,
+    viewability,
+    embeddable,
+    publicDomain,
+    webReaderLink,
+    epub, // Add this field
+    pdf, // Add this field
+  ];
 }
+
+class Epub extends Equatable {
+  final bool? isAvailable;
+
+  const Epub({this.isAvailable});
+
+  factory Epub.fromJson(Map<String, dynamic> json) {
+    return Epub(
+      isAvailable: json['isAvailable'],
+    );
+  }
+
+  @override
+  List<Object?> get props => [isAvailable];
+}
+
+class Pdf extends Equatable {
+  final bool? isAvailable;
+
+  const Pdf({this.isAvailable});
+
+  factory Pdf.fromJson(Map<String, dynamic> json) {
+    return Pdf(
+      isAvailable: json['isAvailable'],
+    );
+  }
+
+  @override
+  List<Object?> get props => [isAvailable];
+}
+
+
+class ReadingModes extends Equatable {
+  final bool? text;
+  final bool? image;
+
+  const ReadingModes({this.text, this.image});
+
+  factory ReadingModes.fromJson(Map<String, dynamic> json) {
+    return ReadingModes(
+      text: json['text'],
+      image: json['image'],
+    );
+  }
+
+  @override
+  List<Object?> get props => [text, image];
+}
+
+class PanelizationSummary extends Equatable {
+  final bool? containsEpubBubbles;
+  final bool? containsImageBubbles;
+
+  const PanelizationSummary({this.containsEpubBubbles, this.containsImageBubbles});
+
+  factory PanelizationSummary.fromJson(Map<String, dynamic> json) {
+    return PanelizationSummary(
+      containsEpubBubbles: json['containsEpubBubbles'],
+      containsImageBubbles: json['containsImageBubbles'],
+    );
+  }
+
+  @override
+  List<Object?> get props => [containsEpubBubbles, containsImageBubbles];
+}
+

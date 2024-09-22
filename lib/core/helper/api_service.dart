@@ -1,35 +1,46 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 class ApiService {
   final _baseUrl = "https://www.googleapis.com/books/v1/";
 
-  final Dio dio;
-  ApiService({
-    required this.dio,
-  });
-  // ApiService() {
-  //   dio = Dio(
-  //     BaseOptions(
-  //       baseUrl: _baseUrl,
-  //       headers: {
-  //         "accept": "*/*",
-  //       },
-  //       connectTimeout: const Duration(seconds: 3),
-  //     ),
-  //   );
-  // }
+  late Dio dio;
 
-  Future<Map<String, dynamic>> get({
-    required String endpoint,
-  }) async {
-    var response = await dio.get(
-      "$_baseUrl$endpoint",
+  ApiService() {
+    dio = Dio(
+      BaseOptions(
+        baseUrl: _baseUrl,
+        headers: {
+          "accept": "*/*",
+        },
+        connectTimeout: const Duration(seconds: 3),
+      ),
     );
-    debugPrint(response.data);
-    return response.data;
   }
 
+  Future<dynamic> get({required String endpoint,}) async {
+    var response = await dio.get(
+      endpoint,
+    );
+
+    return response.data;
+  }
+/*
+  Future<dynamic> postFormData({
+    required String endpoint,
+    required dynamic data,
+  }) async {
+    AppLogger.print("start register");
+
+    FormData formData = FormData.fromMap(data);
+    dio.options.headers.addAll({
+      "Content-Type": "multipart/form-data",
+    });
+
+    var response = await dio.post(endpoint, data: formData);
+
+    return response.data;
+  }
+ */
   Future<dynamic> post({
     required String endpoint,
     Map<String, dynamic>? data,
@@ -66,6 +77,8 @@ class ApiService {
     required String endpoint,
     required dynamic data,
   }) async {
+
+
     FormData formData = FormData.fromMap(data);
     dio.options.headers.addAll({
       "Content-Type": "multipart/form-data",

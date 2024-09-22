@@ -48,11 +48,13 @@ class ServerFailure extends Failure {
     if (statusCode == 401) {
       return ServerFailure(
           errorMessage:
-              "${response['error']['message']}\n Unauthorized. Please check your credentials.");
+              //              "${response['error']['message']}\n Unauthorized. Please check your credentials.");
+              "${response['error']['message']} Unauthorized. Please check your credentials.");
     } else if (statusCode == 403) {
       return ServerFailure(
           errorMessage:
-              "${response['error']['message']}\n Access denied. You do not have permission to access this resource.");
+              //${response['error']['message']}
+              " Access denied. You do not have permission to access this resource.");
     } else if (statusCode == 404) {
       return ServerFailure(
           errorMessage:

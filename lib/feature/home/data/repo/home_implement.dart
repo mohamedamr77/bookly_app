@@ -34,8 +34,8 @@ class HomeImplement implements HomeRepo {
   @override
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
-      var response = await ApiService(dio: Dio())
-          .get(endpoint: "volumes?Filtering=free-ebooks&q=subject:horror");
+      var response = await apiService.get(endpoint: "volumes?Filtering=free-ebooks&q=subject:horror");
+      debugPrint(response.toString());
       List<dynamic> booksFromApi = response["items"];
       List<BookModel> booksList = [];
       for (int i = 0; i < booksFromApi.length; i++) {
@@ -47,6 +47,7 @@ class HomeImplement implements HomeRepo {
       if (e is DioException) {
         return left(ServerFailure.fromDioException(e));
       } else {
+        debugPrint(e.toString());
         return left(ServerFailure(errorMessage: e.toString()));
       }
     }
