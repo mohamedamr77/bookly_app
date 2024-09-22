@@ -68,6 +68,8 @@ class BestSellerListViewItem extends StatelessWidget {
                         ? bookModel.volumeInfo!.authors![0]
                         : "Unknown Author",
                     fontSize: 0.035.w,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     fontFamily: "MontserratSemiBold",
                   ),
                   0.01.ph,
@@ -76,7 +78,7 @@ class BestSellerListViewItem extends StatelessWidget {
                       Expanded(
                         child: GText(
                           color: AppColor.whiteColor,
-                          content: "19.99 €",
+                          content: "Free",
                           fontSize: 0.05.w,
                           fontFamily: "MontserratSemiBold",
                         ),
