@@ -1,4 +1,4 @@
-import 'package:booklyapp/feature/home/presentation/view/widgets/body_featured_book_success_state.dart';
+import 'package:booklyapp/feature/home/presentation/view/widgets/body_featured_book_success.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/shimmer_featured_books_widget/build_shimmer_featured_books_list.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/featured_books/featured_books_cubit.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/featured_books/featured_books_state.dart';
