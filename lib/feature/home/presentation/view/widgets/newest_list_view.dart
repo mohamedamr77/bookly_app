@@ -17,7 +17,6 @@ class BestSellerListView extends StatefulWidget {
 }
 
 class _BestSellerListViewState extends State<BestSellerListView> {
-
   @override
   void initState() {
     super.initState();
@@ -26,125 +25,123 @@ class _BestSellerListViewState extends State<BestSellerListView> {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = BlocProvider.of<NewestBooksCubit>(context);
     return BlocConsumer<NewestBooksCubit, NewestBooksState>(
       builder: (context, state) {
+
         if (state is NewestBooksLoadingState) {
-          // Show shimmer effect when loading
-          return SliverList(
-            delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                return Shimmer.fromColors(
-                  baseColor: Colors.grey[600]!,
-                  highlightColor: Colors.grey[400]!,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 0.01.h, horizontal: 0.05.w),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 0.23.w,
-                          height: 0.18.h,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[600], // Simulated book card
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
-                        0.05.pw,
-                         Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: 0.02.h,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[600], // Simulated book card
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                              ),
-                              0.03.ph,
-                              Container(
-                                height: 0.02.h,
-                                width: 0.3.w,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey[600], // Simulated book card
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                              ),
-                              0.03.ph,
-                              Row(
-                                children: [
-                                  Container(
-                                    height: 0.02.h,
-                                    width: 0.2.w,
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey[600], // Simulated book card
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  Container(
-                                    height: 0.02.h,
-                                    width: 0.12.w,
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey[600], // Simulated book card
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                  ),
-                                  0.02.pw,
-                                  Container(
-                                    height: 0.02.h,
-                                    width: 0.12.w,
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey[600], // Simulated book card
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                  ),
-                                  0.02.pw,
-                                ],
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    )
-                  ),
-                );
-              },
-              childCount: 10, // Simulate 10 loading items
-            ),
-          );
+          return _buildShimmerList();
         }
 
         if (state is NewestBooksSuccessState) {
-          // Show actual list of books when loaded
-          List<BookModel> books = cubit.newestBooksList;
-          PrintFailure.errorMessage(message: books.length.toString());
-          return SliverList(
-            delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                return Column(
-                  children: [
-                    BestSellerListViewItem(bookModel: books[index]),
-                    SizedBox(
-                      height: 0.01.h, // Space between items
-                    ),
-                  ],
-                );
-              },
-              childCount: books.length,
-            ),
-          );
+          return _buildBooksList(context);
         }
 
-        // Show empty container or error message if no books loaded
-        return const SliverToBoxAdapter(
-          child: Center(
-            child: Text("No books available"), // Placeholder for error/empty state
-          ),
-        );
+        return _buildFaliureState();
       },
       listener: (context, state) {},
+    );
+  }
+
+  /// Builds a shimmer effect list for loading state
+  Widget _buildShimmerList() {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+            (context, index) {
+          return Shimmer.fromColors(
+            baseColor: Colors.grey[600]!,
+            highlightColor: Colors.grey[400]!,
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 0.01.h, horizontal: 0.05.w),
+              child: _buildShimmerItem(),
+            ),
+          );
+        },
+        childCount: 10, // Simulated shimmer items count
+      ),
+    );
+  }
+
+  Widget _buildShimmerItem() {
+    return Row(
+      children: [
+        Container(
+          width: 0.23.w,
+          height: 0.18.h,
+          decoration: BoxDecoration(
+            color: Colors.grey[600],
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+        SizedBox(width: 0.05.w),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildShimmerLine(height: 0.02.h),
+              SizedBox(height: 0.03.h),
+              _buildShimmerLine(height: 0.02.h, width: 0.3.w),
+              SizedBox(height: 0.03.h),
+              _buildShimmerDetails(),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Creates a single shimmer line
+  Widget _buildShimmerLine({double height = 0.02, double? width}) {
+    return Container(
+      height: height,
+      width: width ?? double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.grey[600],
+        borderRadius: BorderRadius.circular(16),
+      ),
+    );
+  }
+
+  /// Builds shimmer details with multiple lines
+  Widget _buildShimmerDetails() {
+    return Row(
+      children: [
+        _buildShimmerLine(width: 0.2.w),
+        const Spacer(),
+        _buildShimmerLine(width: 0.12.w),
+        SizedBox(width: 0.02.w),
+        _buildShimmerLine(width: 0.12.w),
+        SizedBox(width: 0.02.w),
+      ],
+    );
+  }
+
+  /// Builds the list of books once loaded successfully
+  Widget _buildBooksList(BuildContext context) {
+    var cubit = BlocProvider.of<NewestBooksCubit>(context);
+    List<BookModel> books = cubit.newestBooksList;
+    PrintFailure.errorMessage(message: books.length.toString());
+
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+            (context, index) {
+          return Column(
+            children: [
+              BestSellerListViewItem(bookModel: books[index]),
+              SizedBox(height: 0.01.h), // Space between items
+            ],
+          );
+        },
+        childCount: books.length,
+      ),
+    );
+  }
+
+  /// Displays an empty state if no books are available
+  Widget _buildFaliureState() {
+    return const SliverToBoxAdapter(
+      child: Center(
+        child: Text("No books available"),
+      ),
     );
   }
 }
