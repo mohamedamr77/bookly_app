@@ -17,13 +17,16 @@ class ApiService {
     );
   }
 
-  Future<dynamic> get({required String endpoint,}) async {
+  Future<dynamic> get({
+    required String endpoint,
+  }) async {
     var response = await dio.get(
       endpoint,
     );
 
     return response.data;
   }
+
 /*
   Future<dynamic> postFormData({
     required String endpoint,
@@ -77,8 +80,6 @@ class ApiService {
     required String endpoint,
     required dynamic data,
   }) async {
-
-
     FormData formData = FormData.fromMap(data);
     dio.options.headers.addAll({
       "Content-Type": "multipart/form-data",

@@ -11,21 +11,20 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
   FeaturedBooksCubit(this.homeRepo) : super(FeaturedBooksInitialState());
   List<BookModel> featuredBooksList = [];
   final HomeRepo homeRepo;
-  bool loading=false;
-   fetchFeaturedBooks() async {
-     loading=true;
+  bool loading = false;
+  fetchFeaturedBooks() async {
+    loading = true;
     emit(FeaturedBooksLoadingState());
     Either<Failure, List<BookModel>> result =
         await homeRepo.fetchFeaturedBooks();
     result.fold((faliure) {
-      loading=false;
-      PrintFailure.errorMessage(message:"the error featured books  $faliure ");
+      loading = false;
+      PrintFailure.errorMessage(message: "the error featured books  $faliure ");
       emit(FeaturedBooksFaliureState(errorMessage: faliure.errorMessage));
     }, (success) {
-      loading=false;
+      loading = false;
       featuredBooksList = success;
       emit(FeaturedBooksSuccessState());
     });
-
   }
 }

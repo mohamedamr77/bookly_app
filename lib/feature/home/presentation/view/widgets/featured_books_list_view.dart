@@ -5,8 +5,6 @@ import 'package:booklyapp/feature/home/presentation/view_model/featured_books/fe
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:skeletonizer/skeletonizer.dart';
-
 import 'custom_list_view_item.dart';
 
 class FeaturedBooksListView extends StatefulWidget {
@@ -46,8 +44,8 @@ class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
                     padding: index == 0
                         ? EdgeInsets.only(left: 0.05.w)
                         : index == 9
-                        ? EdgeInsets.only(right: 0.07.w)
-                        : EdgeInsets.zero,
+                            ? EdgeInsets.only(right: 0.07.w)
+                            : EdgeInsets.zero,
                     child: Container(
                       width: 0.4.w,
                       height: 0.2.h,
@@ -55,7 +53,6 @@ class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
                         color: Colors.grey[600],
                         borderRadius: BorderRadius.circular(12),
                       ),
-
                     ),
                   );
                 },
@@ -78,8 +75,8 @@ class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
                 padding: index == 0
                     ? EdgeInsets.only(left: 0.05.w)
                     : index == books.length - 1
-                    ? EdgeInsets.only(right: 0.07.w)
-                    : EdgeInsets.zero,
+                        ? EdgeInsets.only(right: 0.07.w)
+                        : EdgeInsets.zero,
                 child: CustomListViewItem(bookModel: books[index]),
               );
             },
