@@ -1,8 +1,15 @@
+import 'package:booklyapp/core/shared_widget/custom_text.dart';
+import 'package:booklyapp/core/shared_widget/global_text.dart';
+import 'package:booklyapp/core/utils/app_color.dart';
+import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/home_body.dart';
+import 'package:booklyapp/feature/home/presentation/view/widgets/offline_body.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/internet_home/internet_home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../../../core/shared_widget/custom_elevated_btn.dart';
 import '../view_model/internet_home/internet_home_cubit.dart';
 
 class HomeView extends StatefulWidget {
@@ -25,21 +32,34 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<InternetHomeCubit, InternetHomeState>(
+      body: BlocConsumer<InternetHomeCubit, InternetHomeState>(
         builder: (context, state) {
           if (state is InternetHomeFaliureState) {
-            return const Center(
-              child: Text('Failed to load data. Please check your internet connection.'),
-            );
+            return  const OfflineBody();
           }
           if (state is InternetHomeSuccessState) {
             return const HomeBody();
           }
-          return const Center(
-            child: CircularProgressIndicator(), // Show loading while checking internet
-          );
+          return const CircularProgressIndicator();
+        },
+        listener: (context, state) {
+          if (state is InternetHomeFaliureState){
+            showToastFaliure(message: state.errorMessage);
+          }
         },
       ),
+    );
+  }
+  showToastFaliure({required message}){
+    return    Fluttertoast.showToast(
+      msg: message,
+      fontSize: 16,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      timeInSecForIosWeb: 1,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      webShowClose: true,
     );
   }
 }

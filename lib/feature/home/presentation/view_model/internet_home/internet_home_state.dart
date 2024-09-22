@@ -5,3 +5,4 @@ class InternetHomeFaliureState extends InternetHomeState{
   InternetHomeFaliureState({required this.errorMessage});
 }
 class InternetHomeSuccessState extends InternetHomeState{}
+class InternetHomeLoadingState extends InternetHomeState{}
