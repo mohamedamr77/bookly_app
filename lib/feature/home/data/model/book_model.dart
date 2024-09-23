@@ -55,14 +55,15 @@ class VolumeInfo extends Equatable {
   final String? description;
   final int? pageCount;
   final List<IndustryIdentifier>? industryIdentifiers;
-  final double? averageRating;
+  final num? averageRating;
   final int? ratingsCount;
   final String? language;
   final String? previewLink;
   final String? infoLink;
   final ImageLinks? imageLinks;
-  final ReadingModes? readingModes; // Add this field
-  final PanelizationSummary? panelizationSummary; // Add this field
+  final List<String>? categories; // Add categories field
+  final ReadingModes? readingModes; // Existing field
+  final PanelizationSummary? panelizationSummary; // Existing field
 
   const VolumeInfo({
     this.title,
@@ -78,6 +79,7 @@ class VolumeInfo extends Equatable {
     this.previewLink,
     this.infoLink,
     this.imageLinks,
+    this.categories, // Add this to the constructor
     this.readingModes,
     this.panelizationSummary,
   });
@@ -85,16 +87,17 @@ class VolumeInfo extends Equatable {
   factory VolumeInfo.fromJson(Map<String, dynamic> json) {
     return VolumeInfo(
       title: json['title'],
-      authors:
-          json['authors'] != null ? List<String>.from(json['authors']) : null,
+      authors: json['authors'] != null
+          ? List<String>.from(json['authors'])
+          : null,
       publisher: json['publisher'],
       publishedDate: json['publishedDate'],
       description: json['description'],
       pageCount: json['pageCount'],
       industryIdentifiers: json['industryIdentifiers'] != null
           ? (json['industryIdentifiers'] as List)
-              .map((i) => IndustryIdentifier.fromJson(i))
-              .toList()
+          .map((i) => IndustryIdentifier.fromJson(i))
+          .toList()
           : null,
       averageRating: json['averageRating']?.toDouble(),
       ratingsCount: json['ratingsCount'],
@@ -104,34 +107,42 @@ class VolumeInfo extends Equatable {
       imageLinks: json['imageLinks'] != null
           ? ImageLinks.fromJson(json['imageLinks'])
           : null,
+
+      // categories: (json['categories'] as List<dynamic>?)?.cast<String>(),
+
+      categories: json['categories'] != null
+          ? List<String>.from(json['categories']) // Parse categories
+          : null,
       readingModes: json['readingModes'] != null
           ? ReadingModes.fromJson(json['readingModes'])
-          : null, // Parse readingModes
+          : null,
       panelizationSummary: json['panelizationSummary'] != null
           ? PanelizationSummary.fromJson(json['panelizationSummary'])
-          : null, // Parse panelizationSummary
+          : null,
     );
   }
 
   @override
   List<Object?> get props => [
-        title,
-        authors,
-        publisher,
-        publishedDate,
-        description,
-        pageCount,
-        industryIdentifiers,
-        averageRating,
-        ratingsCount,
-        language,
-        previewLink,
-        infoLink,
-        imageLinks,
-        readingModes, // Add this field
-        panelizationSummary, // Add this field
-      ];
+    title,
+    authors,
+    publisher,
+    publishedDate,
+    description,
+    pageCount,
+    industryIdentifiers,
+    averageRating,
+    ratingsCount,
+    language,
+    previewLink,
+    infoLink,
+    imageLinks,
+    categories, // Add to props
+    readingModes,
+    panelizationSummary,
+  ];
 }
+
 
 class IndustryIdentifier extends Equatable {
   final String? type;
