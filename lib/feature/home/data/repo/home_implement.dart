@@ -15,7 +15,7 @@ class HomeImplement implements HomeRepo {
     try {
       var response = await apiService.get(
           endpoint:
-              "volumes?Filtering=free-ebooks&q=subject:Egypt&Sorting=newest");
+              "volumes?Filtering=free-ebooks&q=subject:art&Sorting=newest");
       List<dynamic> booksFromApi = response["items"];
       List<BookModel> booksList = [];
       for (int i = 0; i < booksFromApi.length; i++) {

@@ -17,9 +17,7 @@ class SimilarBooksItem extends StatelessWidget {
             ? EdgeInsets.only(right: 0.07.w)
             : EdgeInsets.zero,
         child: Image(
-          image: const AssetImage(
-            AppImages.testBook2Image,
-          ),
+          image:  NetworkImage( bookModel.volumeInfo!.imageLinks!.thumbnail??"",),
           width: 0.26.w,
           height: 0.1.h,
         ));
