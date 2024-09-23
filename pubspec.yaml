@@ -47,6 +47,7 @@ dependencies:
   cached_network_image: ^3.4.1
   connectivity_plus: ^3.0.3
   fluttertoast: ^8.2.8
+  url_launcher: ^6.3.0
 
 
 dev_dependencies:
