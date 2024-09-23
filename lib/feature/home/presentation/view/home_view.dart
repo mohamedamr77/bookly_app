@@ -62,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  void checkConnectInternet(){
+  void checkConnectInternet() {
     BlocProvider.of<InternetHomeCubit>(context).connectWithInternet();
   }
 }

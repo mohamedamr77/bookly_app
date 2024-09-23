@@ -33,7 +33,7 @@ class CustomListViewItem extends StatelessWidget {
   void navigateToDetailsScreen() {
     NavigationManager.push(
       BookDetailsView.id,
-       arguments: bookModel,
+      arguments: bookModel,
     );
   }
 }

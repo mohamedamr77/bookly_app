@@ -6,14 +6,16 @@ import 'package:flutter/cupertino.dart';
 import '../../../../core/helper/api_service.dart';
 import 'book_details_repo.dart';
 
-class BookDetailsImplement implements BookDetailsRepo{
+class BookDetailsImplement implements BookDetailsRepo {
   final ApiService apiService;
   BookDetailsImplement(this.apiService);
   @override
-  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category}) async{
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
+      {required String category}) async {
     try {
       var response = await apiService.get(
-          endpoint: "volumes?Filtering=free-ebooks&q=subject:$category&Sorting=relevance");
+          endpoint:
+              "volumes?Filtering=free-ebooks&q=subject:$category&Sorting=relevance");
       debugPrint(response.toString());
       List<dynamic> booksFromApi = response["items"];
       List<BookModel> booksList = [];
@@ -31,5 +33,4 @@ class BookDetailsImplement implements BookDetailsRepo{
       }
     }
   }
-
 }

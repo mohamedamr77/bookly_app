@@ -14,15 +14,15 @@ class CustomElevatedButton extends StatelessWidget {
       required this.onPress,
       required this.child,
       required this.btnColor,
-        required  this.width,
-        required  this.height,
+      required this.width,
+      required this.height,
       this.borderSide});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size(width , height ),
+        fixedSize: Size(width, height),
         backgroundColor: btnColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0.03.w),

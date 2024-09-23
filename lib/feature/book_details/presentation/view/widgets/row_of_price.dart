@@ -6,7 +6,7 @@ import '../../../../../core/utils/app_color.dart';
 
 class RowOfPrice extends StatelessWidget {
   const RowOfPrice({super.key, required this.previewLinkOfBook});
-    final String previewLinkOfBook ;
+  final String previewLinkOfBook;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,22 +20,17 @@ class RowOfPrice extends StatelessWidget {
             topLeft: Radius.circular(0.04.w),
             bottomLeft: Radius.circular(0.04.w),
           ),
-          colorText:
-            AppColor.blackColor,
+          colorText: AppColor.blackColor,
         ),
         PriceOFBook(
-          text: "preview",
-          onTap: () {
-
-          },
-          color: const Color(0xffEF8262),
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(0.04.w),
-            bottomRight: Radius.circular(0.04.w),
-          ),
-          colorText:
-               AppColor.whiteColor
-        ),
+            text: "preview",
+            onTap: () {},
+            color: const Color(0xffEF8262),
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(0.04.w),
+              bottomRight: Radius.circular(0.04.w),
+            ),
+            colorText: AppColor.whiteColor),
       ],
     );
   }

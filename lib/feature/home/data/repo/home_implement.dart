@@ -78,10 +78,12 @@ class HomeImplement implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks({required String category}) async{
+  Future<Either<Failure, List<BookModel>>> fetchSimilarBooks(
+      {required String category}) async {
     try {
       var response = await apiService.get(
-          endpoint: "volumes?Filtering=free-ebooks&q=subject:programming&Sorting=relevance");
+          endpoint:
+              "volumes?Filtering=free-ebooks&q=subject:programming&Sorting=relevance");
       debugPrint(response.toString());
       List<dynamic> booksFromApi = response["items"];
       List<BookModel> booksList = [];

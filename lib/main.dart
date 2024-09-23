@@ -23,8 +23,7 @@ void main() {
           NewestBooksCubit(getIt<HomeImplement>())..fetchNewestBooks(),
     ),
     BlocProvider(
-      create: (context) =>
-          InternetHomeCubit(getIt<HomeImplement>()),
+      create: (context) => InternetHomeCubit(getIt<HomeImplement>()),
     ),
   ], child: const MyApp()));
 }

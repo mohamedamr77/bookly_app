@@ -15,11 +15,15 @@ class BookDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final book = ModalRoute.of(context)?.settings.arguments as BookModel;
-    return  SafeArea(
+    return SafeArea(
       child: BlocProvider(
-        create: (context) => SimilarBooksCubit(BookDetailsImplement(ApiService()))..fetchSimilarBooks(category: book.volumeInfo!.categories![0]),
-        child:  Scaffold(
-          body: BookDetailsBody(bookModel: book,),
+        create: (context) =>
+            SimilarBooksCubit(BookDetailsImplement(ApiService()))
+              ..fetchSimilarBooks(category: book.volumeInfo!.categories![0]),
+        child: Scaffold(
+          body: BookDetailsBody(
+            bookModel: book,
+          ),
         ),
       ),
     );

@@ -27,8 +27,10 @@ class BestSellerListViewItem extends StatelessWidget {
               child: CachedNetworkImage(
                 width: 0.23.w,
                 height: 0.18.h,
-                imageUrl: bookModel.volumeInfo?.imageLinks?.thumbnail ?? '', // Fallback to empty string if null
-                progressIndicatorBuilder: (context, url, downloadProgress) => Shimmer.fromColors(
+                imageUrl: bookModel.volumeInfo?.imageLinks?.thumbnail ??
+                    '', // Fallback to empty string if null
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    Shimmer.fromColors(
                   baseColor: Colors.grey[600]!,
                   highlightColor: Colors.grey[400]!,
                   child: Container(
@@ -40,9 +42,9 @@ class BestSellerListViewItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                errorWidget: (context, url, error) => const Icon(Icons.error), // Shows error icon if imageUrl is invalid
+                errorWidget: (context, url, error) => const Icon(
+                    Icons.error), // Shows error icon if imageUrl is invalid
               ),
-
             ),
             0.05.pw,
             Expanded(
@@ -111,7 +113,7 @@ class BestSellerListViewItem extends StatelessWidget {
   void navigateToDetailsScreen() {
     NavigationManager.push(
       BookDetailsView.id,
-    arguments: bookModel,
+      arguments: bookModel,
     );
   }
 }
