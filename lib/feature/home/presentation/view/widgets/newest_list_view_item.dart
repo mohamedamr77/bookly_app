@@ -109,6 +109,9 @@ class BestSellerListViewItem extends StatelessWidget {
   }
 
   void navigateToDetailsScreen() {
-    NavigationManager.push(BookDetailsView.id);
+    NavigationManager.push(
+      BookDetailsView.id,
+    arguments: bookModel,
+    );
   }
 }

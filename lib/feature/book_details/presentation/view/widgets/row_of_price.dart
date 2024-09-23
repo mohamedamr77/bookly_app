@@ -4,6 +4,50 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_color.dart';
 
+class RowOfPrice extends StatelessWidget {
+  const RowOfPrice({super.key, required this.previewLinkOfBook});
+    final String previewLinkOfBook ;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        PriceOFBook(
+          text: "free",
+          onTap: () {},
+          color: const Color(0xffE5EBF1),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(0.04.w),
+            bottomLeft: Radius.circular(0.04.w),
+          ),
+          colorText:
+            AppColor.blackColor,
+        ),
+        PriceOFBook(
+          text: "preview",
+          onTap: () {
+
+          },
+          color: const Color(0xffEF8262),
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(0.04.w),
+            bottomRight: Radius.circular(0.04.w),
+          ),
+          colorText:
+               AppColor.whiteColor
+        ),
+      ],
+    );
+  }
+}
+
+/*
+import 'package:booklyapp/core/utils/extentions/screen_size.dart';
+import 'package:booklyapp/feature/book_details/presentation/view/widgets/price_of_book.dart';
+import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/app_color.dart';
+
 class RowOfPrice extends StatefulWidget {
   const RowOfPrice({super.key});
 
@@ -19,7 +63,7 @@ class _RowOfPriceState extends State<RowOfPrice> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         PriceOFBook(
-          text: "19.99€",
+          text: "free",
           onTap: () {
             setState(() {
               bookIsFree = false;
@@ -36,7 +80,7 @@ class _RowOfPriceState extends State<RowOfPrice> {
               bookIsFree == false ? AppColor.whiteColor : AppColor.blackColor,
         ),
         PriceOFBook(
-          text: "free",
+          text: "preview",
           onTap: () {
             setState(() {
               bookIsFree = true;
@@ -56,3 +100,5 @@ class _RowOfPriceState extends State<RowOfPrice> {
     );
   }
 }
+
+ */

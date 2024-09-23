@@ -1,6 +1,7 @@
 import 'package:booklyapp/core/utils/app_text.dart';
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/book_details/presentation/view/widgets/row_of_price.dart';
+import 'package:booklyapp/feature/home/data/model/book_model.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/shared_widget/custom_text.dart';
@@ -11,8 +12,8 @@ import 'list_view_similar_books.dart';
 import 'name_book.dart';
 
 class BookDetailsBody extends StatelessWidget {
-  const BookDetailsBody({super.key});
-
+  const BookDetailsBody({super.key, required this.bookModel});
+ final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -23,17 +24,32 @@ class BookDetailsBody extends StatelessWidget {
             children: [
               const AppbarBookDetails(),
               0.02.ph,
-              const CustomImageBookDetails(),
+               CustomImageBookDetails(image: bookModel.volumeInfo?.imageLinks?.thumbnail ?? '',),
               0.03.ph,
-              const NameBook(),
+               NameBook(nameBook: bookModel.volumeInfo!.title,),
               0.02.ph,
-              const AuthorOfTheBook(),
+              AuthorOfTheBook(
+                author:  bookModel.volumeInfo?.authors != null &&
+                  bookModel.volumeInfo!.authors!.isNotEmpty
+                  ? bookModel.volumeInfo!.authors![0]
+                  : "Unknown Author",),
               0.02.ph,
-              const BookRating(
+              BookRating(
                 mainAxisAlignment: MainAxisAlignment.center,
+                averageRating: bookModel.volumeInfo?.averageRating !=
+                    null
+                    ? bookModel.volumeInfo!.averageRating!
+                    .toString()
+                    .trim()
+                    : "N/A", // Default value when averageRating is null
+                ratingsCount: bookModel.volumeInfo?.ratingsCount != null
+                    ? bookModel.volumeInfo!.ratingsCount!
+                    .toString()
+                    .trim()
+                    : "0", // Default value when ratingsCount is null
               ),
               0.02.ph,
-              const RowOfPrice(),
+               RowOfPrice(previewLinkOfBook: bookModel.volumeInfo!.previewLink!,),
               0.04.ph,
               Expanded(
                 child: Padding(
@@ -47,7 +63,7 @@ class BookDetailsBody extends StatelessWidget {
                 ),
               ),
               0.02.ph,
-              const ListViewLikeBooks(),
+               ListViewLikeBooks(bookModel: bookModel,),
               0.02.ph,
             ],
           ),
