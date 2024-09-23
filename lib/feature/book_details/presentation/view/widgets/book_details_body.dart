@@ -7,7 +7,7 @@ import '../../../../../core/shared_widget/custom_text.dart';
 import 'appbar_book_details.dart';
 import 'author_of_the_book.dart';
 import 'custom_image_book_details.dart';
-import 'list_view_like_books.dart';
+import 'list_view_similar_books.dart';
 import 'name_book.dart';
 
 class BookDetailsBody extends StatelessWidget {
