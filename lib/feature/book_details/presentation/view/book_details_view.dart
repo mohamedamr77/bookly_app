@@ -15,7 +15,7 @@ class BookDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return  SafeArea(
       child: BlocProvider(
-        create: (context) => SimilarBooksCubit(BookDetailsImplement(ApiService())),
+        create: (context) => SimilarBooksCubit(BookDetailsImplement(ApiService()))..fetchSimilarBooks(category: "egypt"),
         child: const Scaffold(
           body: BookDetailsBody(),
         ),
