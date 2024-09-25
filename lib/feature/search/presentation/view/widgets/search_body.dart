@@ -1,7 +1,11 @@
+import 'package:booklyapp/core/shared_widget/global_text.dart';
 import 'package:booklyapp/core/utils/app_color.dart';
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/search/presentation/view/widgets/search_result_list_view.dart';
+import 'package:booklyapp/feature/search/presentation/view_model/search_cubit/search_cubit.dart';
+import 'package:booklyapp/feature/search/presentation/view_model/search_cubit/search_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/shared_widget/custom_text.dart';
 import '../../../../../core/shared_widget/custom_text_field.dart';
 
@@ -10,6 +14,8 @@ class SearchBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    var cubit = BlocProvider.of<SearchCubit>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -17,17 +23,21 @@ class SearchBody extends StatelessWidget {
         CustomTextField(
           focusBorder: const OutlineInputBorder(
               borderSide: BorderSide(
-            color: Colors.blueAccent,
-          )),
+                color: Colors.blueAccent,
+              )),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-            color: AppColor.whiteColor.withOpacity(0.4),
-          )),
+                color: AppColor.whiteColor.withOpacity(0.4),
+              )),
           hintText: 'search',
           suffixIcon: const Icon(
             Icons.search,
             color: AppColor.whiteColor,
           ),
+          // controller: cubit.searchController,
+          onChanged: (value) {
+            cubit.fetchSearchResult(category: value);
+          },
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 0.06.w, vertical: 0.02.h),
@@ -35,7 +45,15 @@ class SearchBody extends StatelessWidget {
             text: "Search result :",
           ),
         ),
-        const SearchResultListView(),
+        BlocBuilder<SearchCubit, SearchState>(
+          builder: (context, state) {
+            if (cubit.resultSearchList.isEmpty){
+              return GText(color: Colors.white, content: "NoT Items", fontSize: 0.05.w);
+            }
+            return  SearchResultListView();
+          },
+        ),
+
       ],
     );
   }
