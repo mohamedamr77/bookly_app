@@ -1,4 +1,6 @@
+import 'package:booklyapp/core/navigation/navigation_manager.dart';
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
+import 'package:booklyapp/feature/book_details/presentation/view/book_details_view.dart';
 import 'package:booklyapp/feature/home/data/model/book_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -17,16 +19,21 @@ class SimilarBooksItem extends StatelessWidget {
           : index == 9
               ? EdgeInsets.only(right: 0.07.w)
               : EdgeInsets.zero,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: CachedNetworkImage(
-          fit: BoxFit.fill,
-          width: 0.26.w,
-          height: 0.1.h,
-          imageUrl: bookModel.volumeInfo!.imageLinks?.thumbnail ?? "",
-          progressIndicatorBuilder: (context, url, downloadProgress) =>
-              const ShimmerFeaturedBookItem(),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
+      child: GestureDetector(
+        onTap: (){
+          NavigationManager.push(BookDetailsView.id,arguments: bookModel);
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: CachedNetworkImage(
+            fit: BoxFit.fill,
+            width: 0.26.w,
+            height: 0.1.h,
+            imageUrl: bookModel.volumeInfo!.imageLinks?.thumbnail ?? "",
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+                const ShimmerFeaturedBookItem(),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          ),
         ),
       ),
     );

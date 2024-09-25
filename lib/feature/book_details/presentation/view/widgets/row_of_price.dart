@@ -1,12 +1,15 @@
+import 'package:booklyapp/core/shared_function/launch_url.dart';
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/book_details/presentation/view/widgets/price_of_book.dart';
+import 'package:booklyapp/feature/home/data/model/book_model.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/utils/app_color.dart';
 
 class RowOfPrice extends StatelessWidget {
-  const RowOfPrice({super.key, required this.previewLinkOfBook});
-  final String previewLinkOfBook;
+  const RowOfPrice({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -23,8 +26,10 @@ class RowOfPrice extends StatelessWidget {
           colorText: AppColor.blackColor,
         ),
         PriceOFBook(
-            text: "preview",
-            onTap: () {},
+            text: getText(bookModel: bookModel),
+            onTap: () {
+            launchCustomUrl(url: bookModel.volumeInfo!.previewLink!, context: context);
+            },
             color: const Color(0xffEF8262),
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(0.04.w),
@@ -34,66 +39,14 @@ class RowOfPrice extends StatelessWidget {
       ],
     );
   }
-}
+  String getText({required BookModel bookModel}){
+   if (bookModel.volumeInfo!.previewLink == null){
+          return "Not available";
+   }else {
+     return "preview";
+   }
 
-/*
-import 'package:booklyapp/core/utils/extentions/screen_size.dart';
-import 'package:booklyapp/feature/book_details/presentation/view/widgets/price_of_book.dart';
-import 'package:flutter/material.dart';
-
-import '../../../../../core/utils/app_color.dart';
-
-class RowOfPrice extends StatefulWidget {
-  const RowOfPrice({super.key});
-
-  @override
-  State<RowOfPrice> createState() => _RowOfPriceState();
-}
-
-class _RowOfPriceState extends State<RowOfPrice> {
-  bool bookIsFree = true;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        PriceOFBook(
-          text: "free",
-          onTap: () {
-            setState(() {
-              bookIsFree = false;
-            });
-          },
-          color: bookIsFree == false
-              ? const Color(0xffEF8262)
-              : const Color(0xffE5EBF1),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(0.04.w),
-            bottomLeft: Radius.circular(0.04.w),
-          ),
-          colorText:
-              bookIsFree == false ? AppColor.whiteColor : AppColor.blackColor,
-        ),
-        PriceOFBook(
-          text: "preview",
-          onTap: () {
-            setState(() {
-              bookIsFree = true;
-            });
-          },
-          color: bookIsFree == true
-              ? const Color(0xffEF8262)
-              : const Color(0xffE5EBF1),
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(0.04.w),
-            bottomRight: Radius.circular(0.04.w),
-          ),
-          colorText:
-              bookIsFree == true ? AppColor.whiteColor : AppColor.blackColor,
-        ),
-      ],
-    );
   }
 }
 
- */
+

@@ -50,7 +50,7 @@ class BookDetailsBody extends StatelessWidget {
               ),
               0.02.ph,
               RowOfPrice(
-                previewLinkOfBook: bookModel.volumeInfo!.previewLink!,
+                bookModel: bookModel,
               ),
               0.04.ph,
               Expanded(
