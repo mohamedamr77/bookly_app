@@ -1,11 +1,13 @@
 import 'package:booklyapp/core/shared_widget/global_text.dart';
 import 'package:booklyapp/core/utils/app_color.dart';
+import 'package:booklyapp/core/utils/app_images.dart';
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/search/presentation/view/widgets/search_result_list_view.dart';
 import 'package:booklyapp/feature/search/presentation/view_model/search_cubit/search_cubit.dart';
 import 'package:booklyapp/feature/search/presentation/view_model/search_cubit/search_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import '../../../../../core/shared_widget/custom_text.dart';
 import '../../../../../core/shared_widget/custom_text_field.dart';
 
@@ -48,9 +50,17 @@ class SearchBody extends StatelessWidget {
         BlocBuilder<SearchCubit, SearchState>(
           builder: (context, state) {
             if (cubit.resultSearchList.isEmpty){
-              return GText(color: Colors.white, content: "NoT Items", fontSize: 0.05.w);
+              return   Expanded(
+                child: Center(
+                  child: Lottie.asset(
+                    "assets/lottie/search.json",
+                   height: 0.4.h,
+                    width: 0.8.w
+                  ),
+                ),
+              );
             }
-            return  SearchResultListView();
+            return  const SearchResultListView();
           },
         ),
 
