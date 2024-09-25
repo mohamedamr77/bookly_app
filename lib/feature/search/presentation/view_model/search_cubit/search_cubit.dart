@@ -8,9 +8,8 @@ import '../../../../home/data/model/book_model.dart';
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit(this.searchRepo) : super(SearchInitialState());
 
-
   final SearchRepo searchRepo;
-   List<BookModel> resultSearchList=[];
+  List<BookModel> resultSearchList = [];
 
   bool loading = false;
 
@@ -25,7 +24,7 @@ class SearchCubit extends Cubit<SearchState> {
       print(error.errorMessage);
     }, (right) {
       loading = false;
-      resultSearchList=right;
+      resultSearchList = right;
       print("list $resultSearchList}");
       emit(SearchSuccessState());
     });

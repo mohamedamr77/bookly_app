@@ -76,6 +76,4 @@ class HomeImplement implements HomeRepo {
       return const Right(null); // Return success for any other connection
     }
   }
-
-
 }

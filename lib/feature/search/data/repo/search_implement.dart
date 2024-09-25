@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../../core/helper/api_service.dart';
 
-class SearchImplement implements SearchRepo{
+class SearchImplement implements SearchRepo {
   final ApiService apiService;
   SearchImplement(this.apiService);
 
@@ -17,7 +17,7 @@ class SearchImplement implements SearchRepo{
     try {
       var response = await apiService.get(
           endpoint:
-          "volumes?Filtering=free-ebooks&q=subject:$category&Sorting=relevance");
+              "volumes?Filtering=free-ebooks&q=subject:$category&Sorting=relevance");
       debugPrint(response.toString());
       List<dynamic> booksFromApi = response["items"];
       List<BookModel> booksList = [];
@@ -35,6 +35,4 @@ class SearchImplement implements SearchRepo{
       }
     }
   }
-  }
-
-
+}

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ShimmerFeaturedBookItem extends StatelessWidget {
-  const ShimmerFeaturedBookItem({super.key,  this.height});
-    final double? height;
+  const ShimmerFeaturedBookItem({super.key, this.height});
+  final double? height;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ??0.28.h,
+      height: height ?? 0.28.h,
       child: Shimmer.fromColors(
         baseColor: Colors.grey[600]!,
         highlightColor: Colors.grey[400]!,

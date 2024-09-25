@@ -15,17 +15,16 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: RefreshIndicator(
-          onRefresh: () async{
-            await Future.delayed(
-              const Duration(seconds: 1),
-              () {
-               BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
-              },
-            );
-
+      onRefresh: () async {
+        await Future.delayed(
+          const Duration(seconds: 1),
+          () {
+            BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
           },
-          child: CustomScrollView(
-                slivers: [
+        );
+      },
+      child: CustomScrollView(
+        slivers: [
           const SliverToBoxAdapter(child: AppbarHome()),
           SliverToBoxAdapter(
             child: 0.02.ph,
@@ -43,8 +42,8 @@ class HomeBody extends StatelessWidget {
             ),
           ),
           const BestSellerListView(),
-                ],
-              ),
-        ));
+        ],
+      ),
+    ));
   }
 }

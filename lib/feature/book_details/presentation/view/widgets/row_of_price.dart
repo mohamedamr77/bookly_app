@@ -3,7 +3,6 @@ import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/book_details/presentation/view/widgets/price_of_book.dart';
 import 'package:booklyapp/feature/home/data/model/book_model.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/utils/app_color.dart';
 
@@ -28,7 +27,8 @@ class RowOfPrice extends StatelessWidget {
         PriceOFBook(
             text: getText(bookModel: bookModel),
             onTap: () {
-            launchCustomUrl(url: bookModel.volumeInfo!.previewLink!, context: context);
+              launchCustomUrl(
+                  url: bookModel.volumeInfo!.previewLink!, context: context);
             },
             color: const Color(0xffEF8262),
             borderRadius: BorderRadius.only(
@@ -39,14 +39,12 @@ class RowOfPrice extends StatelessWidget {
       ],
     );
   }
-  String getText({required BookModel bookModel}){
-   if (bookModel.volumeInfo!.previewLink == null){
-          return "Not available";
-   }else {
-     return "preview";
-   }
 
+  String getText({required BookModel bookModel}) {
+    if (bookModel.volumeInfo!.previewLink == null) {
+      return "Not available";
+    } else {
+      return "preview";
+    }
   }
 }
-
-

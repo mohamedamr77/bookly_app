@@ -11,18 +11,20 @@ class SearchResultListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   var cubit= BlocProvider.of<SearchCubit>(context);
+    var cubit = BlocProvider.of<SearchCubit>(context);
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         return Expanded(
           child: ListView.separated(
-              itemBuilder: (context, index) {
-                 return  BestSellerListViewItem(bookModel: cubit.resultSearchList[index],);
-              },
-              separatorBuilder: (context, index) {
-                return 0.02.ph;
-              },
-              itemCount: cubit.resultSearchList.length,
+            itemBuilder: (context, index) {
+              return BestSellerListViewItem(
+                bookModel: cubit.resultSearchList[index],
+              );
+            },
+            separatorBuilder: (context, index) {
+              return 0.02.ph;
+            },
+            itemCount: cubit.resultSearchList.length,
           ),
         );
       },

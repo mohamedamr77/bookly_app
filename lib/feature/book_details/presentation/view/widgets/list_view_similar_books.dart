@@ -4,7 +4,6 @@ import 'package:booklyapp/feature/home/data/model/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../../../home/presentation/view/widgets/shimmer_featured_books_widget/shimmer_featured_book_item_blace_holder.dart';
 import '../../view_model/similar_books/similar_books_cubit.dart';
 import '../../view_model/similar_books/similar_books_state.dart';
 
@@ -15,17 +14,14 @@ class ListViewLikeBooks extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
       builder: (BuildContext context, SimilarBooksState state) {
-
-        if( state is SimilarBooksFaliureState){
+        if (state is SimilarBooksFaliureState) {
           return const Text('Failed to load similar books');
         }
-        if( state is SimilarBooksSuccessState){
+        if (state is SimilarBooksSuccessState) {
           return itemSimilarBooksSuccess(state: state);
-
         }
-         return shimmerSimilarBooksLoading();
-        },
-
+        return shimmerSimilarBooksLoading();
+      },
     );
   }
 
@@ -39,9 +35,8 @@ class ListViewLikeBooks extends StatelessWidget {
             baseColor: Colors.grey[600]!,
             highlightColor: Colors.grey[400]!,
             child: Padding(
-              padding:
-              EdgeInsets.symmetric(vertical: 0.01.h),
-              child:  Container(
+              padding: EdgeInsets.symmetric(vertical: 0.01.h),
+              child: Container(
                 width: 0.23.w,
                 height: 0.18.h,
                 decoration: BoxDecoration(
@@ -60,7 +55,7 @@ class ListViewLikeBooks extends StatelessWidget {
     );
   }
 
-  Widget itemSimilarBooksSuccess({required state}){
+  Widget itemSimilarBooksSuccess({required state}) {
     return SizedBox(
       height: 0.2.h,
       child: ListView.separated(
@@ -80,8 +75,4 @@ class ListViewLikeBooks extends StatelessWidget {
       ),
     );
   }
-
 }
-
-
-

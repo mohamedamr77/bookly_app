@@ -1,6 +1,4 @@
-import 'package:booklyapp/core/shared_widget/global_text.dart';
 import 'package:booklyapp/core/utils/app_color.dart';
-import 'package:booklyapp/core/utils/app_images.dart';
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/search/presentation/view/widgets/search_result_list_view.dart';
 import 'package:booklyapp/feature/search/presentation/view_model/search_cubit/search_cubit.dart';
@@ -16,7 +14,6 @@ class SearchBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     var cubit = BlocProvider.of<SearchCubit>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,12 +22,12 @@ class SearchBody extends StatelessWidget {
         CustomTextField(
           focusBorder: const OutlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.blueAccent,
-              )),
+            color: Colors.blueAccent,
+          )),
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: AppColor.whiteColor.withOpacity(0.4),
-              )),
+            color: AppColor.whiteColor.withOpacity(0.4),
+          )),
           hintText: 'search',
           suffixIcon: const Icon(
             Icons.search,
@@ -49,21 +46,17 @@ class SearchBody extends StatelessWidget {
         ),
         BlocBuilder<SearchCubit, SearchState>(
           builder: (context, state) {
-            if (cubit.resultSearchList.isEmpty){
-              return   Expanded(
+            if (cubit.resultSearchList.isEmpty) {
+              return Expanded(
                 child: Center(
-                  child: Lottie.asset(
-                    "assets/lottie/search.json",
-                   height: 0.4.h,
-                    width: 0.8.w
-                  ),
+                  child: Lottie.asset("assets/lottie/search.json",
+                      height: 0.4.h, width: 0.8.w),
                 ),
               );
             }
-            return  const SearchResultListView();
+            return const SearchResultListView();
           },
         ),
-
       ],
     );
   }

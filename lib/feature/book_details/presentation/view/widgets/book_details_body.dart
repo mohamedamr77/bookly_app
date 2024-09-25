@@ -16,7 +16,7 @@ class BookDetailsBody extends StatelessWidget {
   final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
-    return  SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
         children: [
           const AppbarBookDetails(),
@@ -31,7 +31,7 @@ class BookDetailsBody extends StatelessWidget {
           0.02.ph,
           AuthorOfTheBook(
             author: bookModel.volumeInfo?.authors != null &&
-                bookModel.volumeInfo!.authors!.isNotEmpty
+                    bookModel.volumeInfo!.authors!.isNotEmpty
                 ? bookModel.volumeInfo!.authors![0]
                 : "Unknown Author",
           ),

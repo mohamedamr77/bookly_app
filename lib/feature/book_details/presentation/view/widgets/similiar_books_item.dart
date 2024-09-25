@@ -20,8 +20,8 @@ class SimilarBooksItem extends StatelessWidget {
               ? EdgeInsets.only(right: 0.07.w)
               : EdgeInsets.zero,
       child: GestureDetector(
-        onTap: (){
-          NavigationManager.push(BookDetailsView.id,arguments: bookModel);
+        onTap: () {
+          NavigationManager.push(BookDetailsView.id, arguments: bookModel);
         },
         child: ClipRRect(
           borderRadius: BorderRadius.circular(12),
