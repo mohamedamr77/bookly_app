@@ -16,63 +16,56 @@ class BookDetailsBody extends StatelessWidget {
   final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverFillRemaining(
-          hasScrollBody: false,
-          child: Column(
-            children: [
-              const AppbarBookDetails(),
-              0.02.ph,
-              CustomImageBookDetails(
-                image: bookModel.volumeInfo?.imageLinks?.thumbnail ?? '',
-              ),
-              0.03.ph,
-              NameBook(
-                nameBook: bookModel.volumeInfo!.title,
-              ),
-              0.02.ph,
-              AuthorOfTheBook(
-                author: bookModel.volumeInfo?.authors != null &&
-                        bookModel.volumeInfo!.authors!.isNotEmpty
-                    ? bookModel.volumeInfo!.authors![0]
-                    : "Unknown Author",
-              ),
-              0.02.ph,
-              BookRating(
-                mainAxisAlignment: MainAxisAlignment.center,
-                averageRating: bookModel.volumeInfo?.averageRating != null
-                    ? bookModel.volumeInfo!.averageRating!.toString().trim()
-                    : "N/A", // Default value when averageRating is null
-                ratingsCount: bookModel.volumeInfo?.ratingsCount != null
-                    ? bookModel.volumeInfo!.ratingsCount!.toString().trim()
-                    : "0", // Default value when ratingsCount is null
-              ),
-              0.02.ph,
-              RowOfPrice(
-                bookModel: bookModel,
-              ),
-              0.04.ph,
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 0.06.w),
-                  child: const Align(
-                    alignment: Alignment.centerLeft,
-                    child: CustomText(
-                      text: AppText.youCanAlsoLike,
-                    ),
-                  ),
-                ),
-              ),
-              0.02.ph,
-              ListViewLikeBooks(
-                bookModel: bookModel,
-              ),
-              0.02.ph,
-            ],
+    return  SingleChildScrollView(
+      child: Column(
+        children: [
+          const AppbarBookDetails(),
+          0.02.ph,
+          CustomImageBookDetails(
+            image: bookModel.volumeInfo?.imageLinks?.thumbnail ?? '',
           ),
-        )
-      ],
+          0.03.ph,
+          NameBook(
+            nameBook: bookModel.volumeInfo!.title,
+          ),
+          0.02.ph,
+          AuthorOfTheBook(
+            author: bookModel.volumeInfo?.authors != null &&
+                bookModel.volumeInfo!.authors!.isNotEmpty
+                ? bookModel.volumeInfo!.authors![0]
+                : "Unknown Author",
+          ),
+          0.02.ph,
+          BookRating(
+            mainAxisAlignment: MainAxisAlignment.center,
+            averageRating: bookModel.volumeInfo?.averageRating != null
+                ? bookModel.volumeInfo!.averageRating!.toString().trim()
+                : "N/A", // Default value when averageRating is null
+            ratingsCount: bookModel.volumeInfo?.ratingsCount != null
+                ? bookModel.volumeInfo!.ratingsCount!.toString().trim()
+                : "0", // Default value when ratingsCount is null
+          ),
+          0.02.ph,
+          RowOfPrice(
+            bookModel: bookModel,
+          ),
+          0.04.ph,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 0.06.w),
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: CustomText(
+                text: AppText.youCanAlsoLike,
+              ),
+            ),
+          ),
+          0.02.ph,
+          ListViewLikeBooks(
+            bookModel: bookModel,
+          ),
+          0.02.ph,
+        ],
+      ),
     );
   }
 }
