@@ -3,6 +3,7 @@ import '../Epub/Epub_model.dart';
 import '../Pdf/pdf_model.dart';
 import 'package:hive/hive.dart';
 part 'access_info_model.g.dart';
+
 @HiveType(typeId: 9)
 class AccessInfo extends Equatable {
   @HiveField(0)
@@ -46,12 +47,12 @@ class AccessInfo extends Equatable {
 
   @override
   List<Object?> get props => [
-    country,
-    viewability,
-    embeddable,
-    publicDomain,
-    webReaderLink,
-    epub, // Add this field
-    pdf, // Add this field
-  ];
+        country,
+        viewability,
+        embeddable,
+        publicDomain,
+        webReaderLink,
+        epub, // Add this field
+        pdf, // Add this field
+      ];
 }

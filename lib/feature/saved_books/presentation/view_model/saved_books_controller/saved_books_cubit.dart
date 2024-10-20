@@ -6,8 +6,8 @@ import 'package:hive/hive.dart';
 
 class SavedBooksCubit extends Cubit<SavedBooksState> {
   SavedBooksCubit() : super(SavedBooksInitialState());
-  List<BookModel> savedBooksList=[];
-   var box= Hive.box<BookModel>(BoxApp.savedBookBox);
+  List<BookModel> savedBooksList = [];
+  var box = Hive.box<BookModel>(BoxApp.savedBookBox);
 
   changeSavedBookIcon({required BookModel bookModel}) {
     if (!savedBooksList.any((savedBook) => savedBook.id == bookModel.id)) {
@@ -17,22 +17,21 @@ class SavedBooksCubit extends Cubit<SavedBooksState> {
     }
   }
 
-
-  addSavedBook({required BookModel bookModel})async{
-    bookModel.saveBook=!bookModel.saveBook;
+  addSavedBook({required BookModel bookModel}) async {
+    bookModel.saveBook = !bookModel.saveBook;
     savedBooksList.add(bookModel);
-     box.put("${bookModel.id}", bookModel);
+    box.put("${bookModel.id}", bookModel);
     emit(SavedBooksAddState());
   }
 
-  removeSavedBook({required BookModel bookModel}){
-    bookModel.saveBook=!bookModel.saveBook;
+  removeSavedBook({required BookModel bookModel}) {
+    bookModel.saveBook = !bookModel.saveBook;
     savedBooksList.remove(bookModel);
     box.delete("${bookModel.id}");
     emit(SavedBooksRemoveState());
   }
 
-   fetchSavedBooks(){
+  fetchSavedBooks() {
     savedBooksList = box.values.toList();
   }
 }

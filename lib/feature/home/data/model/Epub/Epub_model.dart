@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 part 'Epub_model.g.dart';
+
 @HiveType(typeId: 8)
 class Epub extends Equatable {
   @HiveField(0)

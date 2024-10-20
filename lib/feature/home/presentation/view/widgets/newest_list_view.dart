@@ -17,7 +17,6 @@ class BestSellerListView extends StatefulWidget {
 }
 
 class _BestSellerListViewState extends State<BestSellerListView> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -26,6 +25,7 @@ class _BestSellerListViewState extends State<BestSellerListView> {
       savedBookList: BlocProvider.of<SavedBooksCubit>(context).savedBooksList,
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<NewestBooksCubit, NewestBooksState>(

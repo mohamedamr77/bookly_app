@@ -25,7 +25,7 @@ class BookModel extends Equatable {
   @HiveField(7)
   bool saveBook;
 
-   BookModel({
+  BookModel({
     this.kind,
     this.id,
     this.etag,
@@ -56,7 +56,7 @@ class BookModel extends Equatable {
 
   @override
   List<Object?> get props =>
-      [kind, id, etag, selfLink, volumeInfo, saleInfo, accessInfo,saveBook];
+      [kind, id, etag, selfLink, volumeInfo, saleInfo, accessInfo, saveBook];
   @override
   String toString() {
     // TODO: implement toString

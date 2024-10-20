@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 part 'panelization_summary_model.g.dart';
+
 @HiveType(typeId: 5)
 class PanelizationSummary extends Equatable {
   @HiveField(0)

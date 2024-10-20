@@ -14,14 +14,12 @@ class FeaturedBooksListView extends StatefulWidget {
 }
 
 class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     BlocProvider.of<FeaturedBooksCubit>(context).fetchFeaturedBooks(
-        savedBookList:
-       BlocProvider.of<SavedBooksCubit>(context).savedBooksList,
+      savedBookList: BlocProvider.of<SavedBooksCubit>(context).savedBooksList,
     );
   }
 

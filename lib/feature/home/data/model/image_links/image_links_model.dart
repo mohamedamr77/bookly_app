@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 part 'image_links_model.g.dart';
+
 @HiveType(typeId: 7)
 class ImageLinks extends Equatable {
   @HiveField(0)

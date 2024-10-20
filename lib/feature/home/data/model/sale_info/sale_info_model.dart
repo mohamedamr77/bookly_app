@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 part 'sale_info_model.g.dart';
+
 @HiveType(typeId: 2)
 class SaleInfo extends Equatable {
-
   @HiveField(0)
   final String? country;
   @HiveField(1)

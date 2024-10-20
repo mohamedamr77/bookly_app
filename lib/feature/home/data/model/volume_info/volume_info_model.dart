@@ -64,15 +64,15 @@ class VolumeInfo extends Equatable {
     return VolumeInfo(
       title: json['title'],
       authors:
-      json['authors'] != null ? List<String>.from(json['authors']) : null,
+          json['authors'] != null ? List<String>.from(json['authors']) : null,
       publisher: json['publisher'],
       publishedDate: json['publishedDate'],
       description: json['description'],
       pageCount: json['pageCount'],
       industryIdentifiers: json['industryIdentifiers'] != null
           ? (json['industryIdentifiers'] as List)
-          .map((i) => IndustryIdentifier.fromJson(i))
-          .toList()
+              .map((i) => IndustryIdentifier.fromJson(i))
+              .toList()
           : null,
       averageRating: json['averageRating']?.toDouble(),
       ratingsCount: json['ratingsCount'],
@@ -99,21 +99,21 @@ class VolumeInfo extends Equatable {
 
   @override
   List<Object?> get props => [
-    title,
-    authors,
-    publisher,
-    publishedDate,
-    description,
-    pageCount,
-    industryIdentifiers,
-    averageRating,
-    ratingsCount,
-    language,
-    previewLink,
-    infoLink,
-    imageLinks,
-    categories, // Add to props
-    readingModes,
-    panelizationSummary,
-  ];
+        title,
+        authors,
+        publisher,
+        publishedDate,
+        description,
+        pageCount,
+        industryIdentifiers,
+        averageRating,
+        ratingsCount,
+        language,
+        previewLink,
+        infoLink,
+        imageLinks,
+        categories, // Add to props
+        readingModes,
+        panelizationSummary,
+      ];
 }

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 part 'pdf_model.g.dart';
+
 @HiveType(typeId: 4)
 class Pdf extends Equatable {
   @HiveField(0)

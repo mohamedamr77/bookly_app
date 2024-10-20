@@ -24,7 +24,7 @@ import 'feature/home/data/model/sale_info/sale_info_model.dart';
 import 'feature/home/data/model/volume_info/volume_info_model.dart';
 import 'feature/saved_books/presentation/view_model/saved_books_controller/saved_books_cubit.dart';
 
-void main() async{
+void main() async {
   setupGetIt();
   await Hive.initFlutter();
   Hive.registerAdapter(AccessInfoAdapter());
@@ -42,16 +42,13 @@ void main() async{
 
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
-      create: (context) =>
-          FeaturedBooksCubit(getIt<HomeImplement>()),
+      create: (context) => FeaturedBooksCubit(getIt<HomeImplement>()),
     ),
     BlocProvider(
-      create: (context) =>
-      SavedBooksCubit(),
+      create: (context) => SavedBooksCubit(),
     ),
     BlocProvider(
-      create: (context) =>
-          NewestBooksCubit(getIt<HomeImplement>()),
+      create: (context) => NewestBooksCubit(getIt<HomeImplement>()),
     ),
     BlocProvider(
       create: (context) => InternetHomeCubit(getIt<HomeImplement>()),

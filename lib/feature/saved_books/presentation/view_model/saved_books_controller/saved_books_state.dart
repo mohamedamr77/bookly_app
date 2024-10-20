@@ -1,6 +1,7 @@
-abstract class SavedBooksState{}
-class SavedBooksInitialState extends SavedBooksState{}
+abstract class SavedBooksState {}
 
-class SavedBooksAddState extends SavedBooksState{}
-class SavedBooksRemoveState extends SavedBooksState{}
+class SavedBooksInitialState extends SavedBooksState {}
 
+class SavedBooksAddState extends SavedBooksState {}
+
+class SavedBooksRemoveState extends SavedBooksState {}

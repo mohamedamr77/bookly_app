@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 part 'reading_modes_model.g.dart';
+
 @HiveType(typeId: 3)
 class ReadingModes extends Equatable {
   @HiveField(0)

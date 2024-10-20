@@ -15,36 +15,38 @@ class SavedBooksBody extends StatelessWidget {
     var cubit = BlocProvider.of<SavedBooksCubit>(context);
     return BlocBuilder<SavedBooksCubit, SavedBooksState>(
       builder: (context, state) {
-        List<BookModel> savedBook=  cubit.savedBooksList.toSet().toList();
+        List<BookModel> savedBook = cubit.savedBooksList.toSet().toList();
         return Column(
           children: [
             Expanded(
               child: ListView.separated(
-                  itemBuilder: (context, index) {
-                    return   Stack(
-                      children: [
-                        BestSellerListViewItem(bookModel: savedBook[index]),
-                        Positioned(
-                          top: 0.05.h,
-                          right: 0.01.w,
-                          child: IconButton(
-                              onPressed: () {
-                              cubit.changeSavedBookIcon(bookModel: savedBook[index]);
-                                debugPrint(cubit.savedBooksList.length.toString());
-                              },
-                              icon:
-
-                              Icon(
-                                Icons.bookmark_add_rounded,
-                                color: savedBook[index].saveBook?Colors.blue:Colors.white,
-                                size: 0.08.w,
-                              )),
-                        ),
-                      ],
-                    );
-                  },
-                  separatorBuilder: (context, index) => 0.02.ph,
-                  itemCount: savedBook.length,
+                itemBuilder: (context, index) {
+                  return Stack(
+                    children: [
+                      BestSellerListViewItem(bookModel: savedBook[index]),
+                      Positioned(
+                        top: 0.05.h,
+                        right: 0.01.w,
+                        child: IconButton(
+                            onPressed: () {
+                              cubit.changeSavedBookIcon(
+                                  bookModel: savedBook[index]);
+                              debugPrint(
+                                  cubit.savedBooksList.length.toString());
+                            },
+                            icon: Icon(
+                              Icons.bookmark_add_rounded,
+                              color: savedBook[index].saveBook
+                                  ? Colors.blue
+                                  : Colors.white,
+                              size: 0.08.w,
+                            )),
+                      ),
+                    ],
+                  );
+                },
+                separatorBuilder: (context, index) => 0.02.ph,
+                itemCount: savedBook.length,
               ),
             )
           ],

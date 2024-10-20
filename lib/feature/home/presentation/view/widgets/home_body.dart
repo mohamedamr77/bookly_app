@@ -20,7 +20,8 @@ class HomeBody extends StatelessWidget {
           const Duration(seconds: 1),
           () {
             BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks(
-                savedBookList: BlocProvider.of<SavedBooksCubit>(context).savedBooksList,
+              savedBookList:
+                  BlocProvider.of<SavedBooksCubit>(context).savedBooksList,
             );
           },
         );

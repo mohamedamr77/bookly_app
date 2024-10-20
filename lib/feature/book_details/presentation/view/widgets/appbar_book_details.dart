@@ -34,14 +34,16 @@ class AppbarBookDetails extends StatelessWidget {
             ),
             action: IconButton(
                 onPressed: () {
-                  BlocProvider.of<SavedBooksCubit>(context).changeSavedBookIcon(bookModel: bookModel);
-                  debugPrint( BlocProvider.of<SavedBooksCubit>(context).savedBooksList.length.toString());
+                  BlocProvider.of<SavedBooksCubit>(context)
+                      .changeSavedBookIcon(bookModel: bookModel);
+                  debugPrint(BlocProvider.of<SavedBooksCubit>(context)
+                      .savedBooksList
+                      .length
+                      .toString());
                 },
-                icon:
-
-                Icon(
+                icon: Icon(
                   Icons.bookmark_add_rounded,
-                  color: bookModel.saveBook?Colors.blue:Colors.white,
+                  color: bookModel.saveBook ? Colors.blue : Colors.white,
                   size: 0.08.w,
                 )),
           ),

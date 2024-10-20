@@ -1,3 +1,3 @@
-class BoxApp{
-  static const String savedBookBox= "SavedBookBok";
+class BoxApp {
+  static const String savedBookBox = "SavedBookBok";
 }

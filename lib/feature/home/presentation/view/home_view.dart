@@ -39,44 +39,43 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         backgroundColor: AppColor.primaryColor,
         centerTitle: true,
-         title: Image(
-           image: const AssetImage(
-             AppImages.logo,
-           ),
-           width: 0.27.w,
-           height: 0.1.h,
-         ),
-         actions: [
-           IconButton(
-               onPressed: () {
-                 NavigationManager.push(SearchView.id);
-               },
-               icon: Icon(
-                 FontAwesomeIcons.magnifyingGlass,
-                 size: 0.07.w,
-               )),
-         ],
+        title: Image(
+          image: const AssetImage(
+            AppImages.logo,
+          ),
+          width: 0.27.w,
+          height: 0.1.h,
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                NavigationManager.push(SearchView.id);
+              },
+              icon: Icon(
+                FontAwesomeIcons.magnifyingGlass,
+                size: 0.07.w,
+              )),
+        ],
       ),
       drawer: Drawer(
         child: ListView(
           children: [
             0.04.ph,
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 0.04.w),
+              padding: EdgeInsets.symmetric(horizontal: 0.04.w),
               child: Card(
                 color: Colors.white10,
                 child: ListTile(
-                  onTap: (){
+                  onTap: () {
                     NavigationManager.push(SavedBooksScreen.id);
                   },
                   title: GText(
-                    color: AppColor.whiteColor, content: 'Saved Books', fontSize: 0.06.w,
+                    color: AppColor.whiteColor,
+                    content: 'Saved Books',
+                    fontSize: 0.06.w,
                     fontFamily: "GTSectraFineRegular",
-
                   ),
-                  leading: Icon(
-                    Icons.menu_book
-                  ),
+                  leading: const Icon(Icons.menu_book),
                 ),
               ),
             )

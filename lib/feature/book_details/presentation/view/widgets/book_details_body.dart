@@ -19,7 +19,9 @@ class BookDetailsBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-           AppbarBookDetails(bookModel: bookModel,),
+          AppbarBookDetails(
+            bookModel: bookModel,
+          ),
           0.02.ph,
           CustomImageBookDetails(
             image: bookModel.volumeInfo?.imageLinks?.thumbnail ?? '',

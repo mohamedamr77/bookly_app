@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 part 'industry_identifier_model.g.dart';
+
 @HiveType(typeId: 6)
 class IndustryIdentifier extends Equatable {
   @HiveField(0)
