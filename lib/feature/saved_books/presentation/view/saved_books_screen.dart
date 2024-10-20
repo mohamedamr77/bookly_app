@@ -14,6 +14,7 @@ class SavedBooksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
+          backgroundColor: AppColor.primaryColor,
         centerTitle: true,
         leading: IconButton(onPressed: (){NavigationManager.goBack();}, icon: Icon(Icons.arrow_back,color: Colors.white,size: 0.08.w,)),
         title: GText(color: AppColor.whiteColor, content: "Saved Books", fontSize: 0.07.w,fontFamily: "GTSectraFineRegular",)
