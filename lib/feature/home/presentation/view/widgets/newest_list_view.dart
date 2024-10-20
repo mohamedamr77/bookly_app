@@ -5,12 +5,27 @@ import 'package:booklyapp/feature/home/presentation/view/widgets/shimmer_newest_
 import 'package:booklyapp/feature/home/presentation/view_model/newest_books/newest_books_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../saved_books/presentation/view_model/saved_books_controller/saved_books_cubit.dart';
 import '../../view_model/newest_books/newest_books_cubit.dart';
 import 'newest_list_view_item.dart';
 
-class BestSellerListView extends StatelessWidget {
+class BestSellerListView extends StatefulWidget {
   const BestSellerListView({super.key});
 
+  @override
+  State<BestSellerListView> createState() => _BestSellerListViewState();
+}
+
+class _BestSellerListViewState extends State<BestSellerListView> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks(
+      savedBookList: BlocProvider.of<SavedBooksCubit>(context).savedBooksList,
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<NewestBooksCubit, NewestBooksState>(

@@ -9,13 +9,14 @@ class SavedBooksCubit extends Cubit<SavedBooksState> {
   List<BookModel> savedBooksList=[];
    var box= Hive.box<BookModel>(BoxApp.savedBookBox);
 
-  changeSavedBookIcon({required BookModel bookModel}){
-    if (!savedBooksList.contains(bookModel)){
+  changeSavedBookIcon({required BookModel bookModel}) {
+    if (!savedBooksList.any((savedBook) => savedBook.id == bookModel.id)) {
       addSavedBook(bookModel: bookModel);
     } else {
       removeSavedBook(bookModel: bookModel);
     }
   }
+
 
   addSavedBook({required BookModel bookModel})async{
     bookModel.saveBook=!bookModel.saveBook;

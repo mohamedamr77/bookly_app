@@ -11,7 +11,7 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
   List<BookModel> newestBooksList = [];
   final HomeRepo homeRepo;
   bool loading = false;
-  fetchNewestBooks() async {
+  fetchNewestBooks({required List<BookModel> savedBookList}) async {
     loading = true;
     emit(NewestBooksLoadingState());
     Either<Failure, List<BookModel>> result = await homeRepo.fetchNewestBooks();
@@ -21,6 +21,13 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
     }, (success) {
       loading = false;
       newestBooksList = success;
+
+      newestBooksList = newestBooksList.map((bookItem) {
+        if (savedBookList.any((savedBook) => savedBook.id == bookItem.id)) {
+          bookItem.saveBook = true; // Assuming you have a `isNewsMarked` field
+        }
+        return bookItem;
+      }).toList();
       emit(NewestBooksSuccessState());
     });
   }

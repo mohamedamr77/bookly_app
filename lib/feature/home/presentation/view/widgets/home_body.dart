@@ -1,6 +1,7 @@
 import 'package:booklyapp/core/utils/app_text.dart';
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/newest_books/newest_books_cubit.dart';
+import 'package:booklyapp/feature/saved_books/presentation/view_model/saved_books_controller/saved_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/shared_widget/custom_text.dart';
@@ -18,7 +19,9 @@ class HomeBody extends StatelessWidget {
         await Future.delayed(
           const Duration(seconds: 1),
           () {
-            BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
+            BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks(
+                savedBookList: BlocProvider.of<SavedBooksCubit>(context).savedBooksList,
+            );
           },
         );
       },

@@ -43,7 +43,7 @@ void main() async{
   runApp(MultiBlocProvider(providers: [
     BlocProvider(
       create: (context) =>
-          FeaturedBooksCubit(getIt<HomeImplement>())..fetchFeaturedBooks(),
+          FeaturedBooksCubit(getIt<HomeImplement>()),
     ),
     BlocProvider(
       create: (context) =>
@@ -51,7 +51,7 @@ void main() async{
     ),
     BlocProvider(
       create: (context) =>
-          NewestBooksCubit(getIt<HomeImplement>())..fetchNewestBooks(),
+          NewestBooksCubit(getIt<HomeImplement>()),
     ),
     BlocProvider(
       create: (context) => InternetHomeCubit(getIt<HomeImplement>()),

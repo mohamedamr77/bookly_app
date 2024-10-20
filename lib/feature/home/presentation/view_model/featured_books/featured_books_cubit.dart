@@ -12,7 +12,7 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
   List<BookModel> featuredBooksList = [];
   final HomeRepo homeRepo;
   bool loading = false;
-  fetchFeaturedBooks() async {
+  fetchFeaturedBooks({required List<BookModel> savedBookList}) async {
     loading = true;
     emit(FeaturedBooksLoadingState());
     Either<Failure, List<BookModel>> result =
@@ -24,6 +24,14 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
     }, (success) {
       loading = false;
       featuredBooksList = success;
+
+      featuredBooksList = featuredBooksList.map((bookItem) {
+        if (savedBookList.any((savedBook) => savedBook.id == bookItem.id)) {
+          bookItem.saveBook = true; // Assuming you have a `isNewsMarked` field
+        }
+        return bookItem;
+      }).toList();
+
       emit(FeaturedBooksSuccessState());
     });
   }
