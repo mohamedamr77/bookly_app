@@ -1,3 +1,4 @@
+import 'package:booklyapp/core/utils/app_box.dart';
 import 'package:booklyapp/core/utils/app_color.dart';
 import 'package:booklyapp/core/utils/service_locator.dart';
 import 'package:booklyapp/feature/home/data/repo/home_implement.dart';
@@ -36,6 +37,8 @@ void main() async{
   Hive.registerAdapter(SaleInfoAdapter());
   Hive.registerAdapter(VolumeInfoAdapter());
   Hive.registerAdapter(BookModelAdapter());
+
+  await Hive.openBox<BookModel>(BoxApp.savedBookBox);
 
   runApp(MultiBlocProvider(providers: [
     BlocProvider(

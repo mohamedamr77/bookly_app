@@ -4,6 +4,7 @@ import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/home_body.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/offline_body.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/internet_home/internet_home_state.dart';
+import 'package:booklyapp/feature/saved_books/presentation/view_model/saved_books_controller/saved_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -29,6 +30,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     // Call the internet connectivity check in initState
     checkConnectInternet();
+    BlocProvider.of<SavedBooksCubit>(context).fetchSavedBooks();
   }
 
   @override
