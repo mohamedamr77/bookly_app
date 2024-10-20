@@ -10,6 +10,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../core/navigation/navigation_manager.dart';
 import '../../../../core/utils/app_color.dart';
+import '../../../saved_books/presentation/view/saved_books_screen.dart';
 import '../../../search/presentation/view/search_view.dart';
 import '../view_model/internet_home/internet_home_cubit.dart';
 
@@ -63,6 +64,9 @@ class _HomeViewState extends State<HomeView> {
               child: Card(
                 color: Colors.white10,
                 child: ListTile(
+                  onTap: (){
+                    NavigationManager.push(SavedBooksScreen.id);
+                  },
                   title: GText(
                     color: AppColor.whiteColor, content: 'Saved Books', fontSize: 0.06.w,
                     fontFamily: "GTSectraFineRegular",
