@@ -1,9 +1,16 @@
+import 'package:booklyapp/core/shared_widget/global_text.dart';
+import 'package:booklyapp/core/utils/app_images.dart';
+import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/home_body.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/offline_body.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/internet_home/internet_home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../../../core/navigation/navigation_manager.dart';
+import '../../../../core/utils/app_color.dart';
+import '../../../search/presentation/view/search_view.dart';
 import '../view_model/internet_home/internet_home_cubit.dart';
 
 class HomeView extends StatefulWidget {
@@ -26,6 +33,50 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColor.primaryColor,
+        centerTitle: true,
+         title: Image(
+           image: const AssetImage(
+             AppImages.logo,
+           ),
+           width: 0.27.w,
+           height: 0.1.h,
+         ),
+         actions: [
+           IconButton(
+               onPressed: () {
+                 NavigationManager.push(SearchView.id);
+               },
+               icon: Icon(
+                 FontAwesomeIcons.magnifyingGlass,
+                 size: 0.07.w,
+               )),
+         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            0.04.ph,
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal: 0.04.w),
+              child: Card(
+                color: Colors.white10,
+                child: ListTile(
+                  title: GText(
+                    color: AppColor.whiteColor, content: 'Saved Books', fontSize: 0.06.w,
+                    fontFamily: "GTSectraFineRegular",
+
+                  ),
+                  leading: Icon(
+                    Icons.menu_book
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
       body: BlocConsumer<InternetHomeCubit, InternetHomeState>(
         builder: (context, state) {
           return _buildStateContent(state);

@@ -4,7 +4,6 @@ import 'package:booklyapp/feature/home/presentation/view_model/newest_books/newe
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/shared_widget/custom_text.dart';
-import 'appbar_home.dart';
 import 'newest_list_view.dart';
 import 'featured_books_list_view.dart';
 
@@ -25,7 +24,6 @@ class HomeBody extends StatelessWidget {
       },
       child: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(child: AppbarHome()),
           SliverToBoxAdapter(
             child: 0.02.ph,
           ),

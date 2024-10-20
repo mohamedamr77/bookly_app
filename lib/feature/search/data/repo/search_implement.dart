@@ -12,8 +12,7 @@ class SearchImplement implements SearchRepo {
   SearchImplement(this.apiService);
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchSearchResult(
-      {required String category}) async {
+  Future<Either<Failure, List<BookModel>>> fetchSearchResult({required String category}) async {
     try {
       var response = await apiService.get(
           endpoint:
