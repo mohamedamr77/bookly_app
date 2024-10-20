@@ -21,6 +21,7 @@ import 'feature/home/data/model/panelization_summary/panelization_summary_model.
 import 'feature/home/data/model/reading_modes/reading_modes_model.dart';
 import 'feature/home/data/model/sale_info/sale_info_model.dart';
 import 'feature/home/data/model/volume_info/volume_info_model.dart';
+import 'feature/saved_books/presentation/view_model/saved_books_controller/saved_books_cubit.dart';
 
 void main() async{
   setupGetIt();
@@ -40,6 +41,10 @@ void main() async{
     BlocProvider(
       create: (context) =>
           FeaturedBooksCubit(getIt<HomeImplement>())..fetchFeaturedBooks(),
+    ),
+    BlocProvider(
+      create: (context) =>
+      SavedBooksCubit(),
     ),
     BlocProvider(
       create: (context) =>
