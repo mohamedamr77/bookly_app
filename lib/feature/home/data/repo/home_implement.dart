@@ -11,11 +11,11 @@ class HomeImplement implements HomeRepo {
   final ApiService apiService;
   HomeImplement(this.apiService);
   @override
-  Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchNewestBooks({required int startIndex}) async {
     try {
       var response = await apiService.get(
           endpoint:
-              "volumes?Filtering=free-ebooks&q=subject:art&Sorting=newest");
+              "volumes?Filtering=free-ebooks&q=subject:art&Sorting=newest&maxResults=10&startIndex=$startIndex");
       List<dynamic> booksFromApi = response["items"];
       List<BookModel> booksList = [];
       for (int i = 0; i < booksFromApi.length; i++) {
