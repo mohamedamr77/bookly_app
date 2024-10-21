@@ -10,3 +10,11 @@ class NewestBooksFaliureState extends NewestBooksState {
 }
 
 class NewestBooksSuccessState extends NewestBooksState {}
+class NewestBooksPaginationLoadingState extends NewestBooksState {}
+class NewestBooksPaginationFaliureState extends NewestBooksState {
+  final String errorMessage;
+
+  NewestBooksPaginationFaliureState({required this.errorMessage});
+
+}
+
