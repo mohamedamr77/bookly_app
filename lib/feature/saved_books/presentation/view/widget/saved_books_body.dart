@@ -3,6 +3,7 @@ import 'package:booklyapp/feature/home/data/model/book_model.dart';
 import 'package:booklyapp/feature/saved_books/presentation/view_model/saved_books_controller/saved_books_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../home/presentation/view/widgets/newest_list_view_item.dart';
 import '../../view_model/saved_books_controller/saved_books_cubit.dart';
@@ -16,7 +17,15 @@ class SavedBooksBody extends StatelessWidget {
     return BlocBuilder<SavedBooksCubit, SavedBooksState>(
       builder: (context, state) {
         List<BookModel> savedBook = cubit.savedBooksList.toSet().toList();
-        return Column(
+        return
+          savedBook.isEmpty ?
+          Expanded(
+            child: Center(
+              child: Image.asset("assets/images/savedBook.png",
+                  height: 0.4.h, width: 0.8.w
+              )
+            ),
+          ):Column(
           children: [
             Expanded(
               child: ListView.separated(
