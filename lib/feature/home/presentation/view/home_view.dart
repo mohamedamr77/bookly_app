@@ -4,6 +4,7 @@ import 'package:booklyapp/core/utils/extentions/screen_size.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/home_body.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/offline_body.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/internet_home/internet_home_state.dart';
+import 'package:booklyapp/feature/home/presentation/view_model/newest_books/newest_books_state.dart';
 import 'package:booklyapp/feature/saved_books/presentation/view_model/saved_books_controller/saved_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +15,7 @@ import '../../../../core/utils/app_color.dart';
 import '../../../saved_books/presentation/view/saved_books_screen.dart';
 import '../../../search/presentation/view/search_view.dart';
 import '../view_model/internet_home/internet_home_cubit.dart';
+import '../view_model/newest_books/newest_books_cubit.dart';
 
 class HomeView extends StatefulWidget {
   static const id = '/HomeView';
@@ -92,6 +94,35 @@ class _HomeViewState extends State<HomeView> {
           }
         },
       ),
+       bottomSheet: SizedBox(
+         height: 70,
+         child: BlocConsumer<NewestBooksCubit, NewestBooksState>(
+           buildWhen: (previous, current) =>
+           current is NewestBooksPaginationLoadingState ||
+               current is NewestBooksPaginationFaliureState ||
+               current is NewestBooksSuccessState,
+           builder: (context, state) {
+             if (state is NewestBooksPaginationLoadingState) {
+               return Container(
+                 height: 70,
+                 color: AppColor.primaryColor,
+                 child: const Center(
+                   child: CircularProgressIndicator(
+                     color: Colors.blue
+                   ),
+                 ),
+               );
+             } else {
+               return const SizedBox.shrink();
+             }
+           },
+           listener: (context, state) {
+             if (state is NewestBooksPaginationFaliureState) {
+               showToastFaliure(message: "All Items Fetch Failed",);
+             }
+           },
+         ),
+       ),
     );
   }
 

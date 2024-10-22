@@ -13,6 +13,7 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
         child: RefreshIndicator(
       onRefresh: () async {
@@ -26,25 +27,41 @@ class HomeBody extends StatelessWidget {
           },
         );
       },
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: 0.02.ph,
-          ),
-          const SliverToBoxAdapter(child: FeaturedBooksListView()),
-          SliverToBoxAdapter(
-            child: 0.04.ph,
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.only(left: 0.05.w),
-              child: const CustomText(
-                text: AppText.bestSeller,
+      child: NotificationListener<ScrollNotification>(
+        onNotification: (notification) {
+          if (notification.metrics.pixels ==
+                  notification.metrics.maxScrollExtent &&
+              notification is ScrollUpdateNotification) {
+
+            BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks(
+              isLoadingMore: true,
+                savedBookList: BlocProvider.of<SavedBooksCubit>(context).savedBooksList,
+             );
+            debugPrint("ScrollNotification");
+          }
+          return true;
+        },
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            SliverToBoxAdapter(
+              child: 0.02.ph,
+            ),
+            const SliverToBoxAdapter(child: FeaturedBooksListView()),
+            SliverToBoxAdapter(
+              child: 0.04.ph,
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.only(left: 0.05.w),
+                child: const CustomText(
+                  text: AppText.bestSeller,
+                ),
               ),
             ),
-          ),
-          const BestSellerListView(),
-        ],
+            const BestSellerListView(),
+          ],
+        ),
       ),
     ));
   }

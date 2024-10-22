@@ -29,6 +29,9 @@ class _BestSellerListViewState extends State<BestSellerListView> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<NewestBooksCubit, NewestBooksState>(
+      buildWhen: (previous, current) =>
+          current is! NewestBooksPaginationLoadingState &&
+          current is! NewestBooksPaginationFaliureState,
       builder: (context, state) {
         if (state is NewestBooksLoadingState) {
           return const BuildShimmerList();
@@ -71,6 +74,7 @@ class _BestSellerListViewState extends State<BestSellerListView> {
 
   /// Displays an empty state if no books are available
   Widget _buildFaliureState({required String? errorMessage}) {
+    debugPrint(errorMessage);
     return SliverToBoxAdapter(
       child: Center(
         child: Text(errorMessage!),
