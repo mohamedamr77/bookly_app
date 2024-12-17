@@ -41,13 +41,7 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         backgroundColor: AppColor.primaryColor,
         centerTitle: true,
-        title: Image(
-          image: const AssetImage(
-            AppImages.logo,
-          ),
-          width: 0.27.w,
-          height: 0.1.h,
-        ),
+        title: TitleAppBar(),
         actions: [
           IconButton(
               onPressed: () {
@@ -151,5 +145,47 @@ class _HomeViewState extends State<HomeView> {
 
   void checkConnectInternet() {
     BlocProvider.of<InternetHomeCubit>(context).connectWithInternet();
+  }
+}
+
+
+class TitleAppBar extends StatefulWidget {
+  const TitleAppBar({super.key});
+
+  @override
+  State<TitleAppBar> createState() => _TitleAppBarState();
+}
+
+class _TitleAppBarState extends State<TitleAppBar> {
+
+  bool reverse = false;
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder(
+      tween:
+      reverse ?
+      Tween<double>( begin: 0.8 , end: 1) :
+      Tween<double>( begin: 1 , end: 0.8),
+      onEnd: () {
+        setState(() {
+          reverse =!reverse;
+        });
+      },
+      duration: const Duration(milliseconds: 900),
+      child:  Image(
+        image: const AssetImage(
+          AppImages.logo,
+        ),
+        width: 0.27.w,
+        height: 0.1.h,
+      ),
+      builder: (BuildContext context,  value, Widget? child) {
+        return Transform.scale(
+          scale: value,
+          child: child,
+        );
+      },
+
+    );
   }
 }
