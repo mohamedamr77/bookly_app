@@ -1,6 +1,8 @@
 import 'package:booklyapp/core/shared_widget/global_text.dart';
 import 'package:booklyapp/core/utils/app_images.dart';
 import 'package:booklyapp/core/utils/extentions/screen_size.dart';
+import 'package:booklyapp/feature/home/presentation/view/widgets/appbar/action_app_bar.dart';
+import 'package:booklyapp/feature/home/presentation/view/widgets/appbar/title_app_bar.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/home_body.dart';
 import 'package:booklyapp/feature/home/presentation/view/widgets/offline_body.dart';
 import 'package:booklyapp/feature/home/presentation/view_model/internet_home/internet_home_state.dart';
@@ -41,16 +43,9 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         backgroundColor: AppColor.primaryColor,
         centerTitle: true,
-        title: TitleAppBar(),
-        actions: [
-          IconButton(
-              onPressed: () {
-                NavigationManager.push(SearchView.id);
-              },
-              icon: Icon(
-                FontAwesomeIcons.magnifyingGlass,
-                size: 0.07.w,
-              )),
+        title: const TitleAppBar(),
+        actions: const [
+          ActionAppBar(),
         ],
       ),
       drawer: Drawer(
@@ -145,47 +140,5 @@ class _HomeViewState extends State<HomeView> {
 
   void checkConnectInternet() {
     BlocProvider.of<InternetHomeCubit>(context).connectWithInternet();
-  }
-}
-
-
-class TitleAppBar extends StatefulWidget {
-  const TitleAppBar({super.key});
-
-  @override
-  State<TitleAppBar> createState() => _TitleAppBarState();
-}
-
-class _TitleAppBarState extends State<TitleAppBar> {
-
-  bool reverse = false;
-  @override
-  Widget build(BuildContext context) {
-    return TweenAnimationBuilder(
-      tween:
-      reverse ?
-      Tween<double>( begin: 0.8 , end: 1) :
-      Tween<double>( begin: 1 , end: 0.8),
-      onEnd: () {
-        setState(() {
-          reverse =!reverse;
-        });
-      },
-      duration: const Duration(milliseconds: 900),
-      child:  Image(
-        image: const AssetImage(
-          AppImages.logo,
-        ),
-        width: 0.27.w,
-        height: 0.1.h,
-      ),
-      builder: (BuildContext context,  value, Widget? child) {
-        return Transform.scale(
-          scale: value,
-          child: child,
-        );
-      },
-
-    );
   }
 }
